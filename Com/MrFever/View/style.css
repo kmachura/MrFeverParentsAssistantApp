@@ -1,0 +1,32 @@
+.text-area {
+	 -fx-background-image: url("./resources/start_background.png"); 
+	 -fx-background-repeat: no;
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #191970;
+	 -fx-highlight-fill: #FFFFFF; 
+	 -fx-highlight-text-fill: #191970;
+	 -fx-alignment: center;
+}
+
+.button {
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+}
+
+.button:hover, .button:selected {
+	-fx-background-color: #FF0000;
+	-fx-text-fill: #FFFFFF;
+}
+
+.text-area {
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #FF0000;
+}
+
+.root{
+	 
+    -fx-base: #FFFFFF;
+    -fx-background: #FFFFFF;
+}
