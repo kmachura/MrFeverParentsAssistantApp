@@ -1,16 +1,36 @@
 .text-area {
-	 -fx-background-image: url("./resources/start_background.png"); 
-	 -fx-background-repeat: no;
-	 -fx-font: 16px "Serif";
+	 -fx-background-image: url("Resources/start_background.png"); 
+	 -fx-background-repeat: no-repeat;
+	
 	 -fx-text-fill: #191970;
 	 -fx-highlight-fill: #FFFFFF; 
 	 -fx-highlight-text-fill: #191970;
-	 -fx-alignment: center;
+	 -fx-alignment: center;	  
+     -fx-focus-color: #FFFFFF;
+     -fx-faint-focus-color: #FFFFFF;
+     -fx-text-box-border: #FFFFFF;
+     -fx-shadow-highlight-color: white; 
+     -fx-border-insets: 1, 1 1 1 1;     
+}
+
+
+.text-area:focused .content {
+    -fx-background-color: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-faint-focus-color: #FFFFFF;
+    }
+
+.separator:horizontal .line {
+	-fx-border-color: #FFFFFF;
+	-fx-text-box-border: #FFFFFF;
+    -fx-shadow-highlight-color: #FFFFFF; 
+    -fx-border-insets: 1, 1 1 1 1;
 }
 
 .button {
-	 -fx-font: 16px "Serif";
+	 -fx-font: 20px "Serif";
 	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
 	 -fx-border: 0;
 	 -fx-background-color: #FFFFFF;
 }
@@ -26,7 +46,6 @@
 }
 
 .root{
-	 
     -fx-base: #FFFFFF;
     -fx-background: #FFFFFF;
 }
