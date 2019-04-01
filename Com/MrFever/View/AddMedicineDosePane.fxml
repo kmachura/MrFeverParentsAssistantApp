@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.AddMedicineDoseController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="400.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/MrFeverMini.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+     <Pane prefHeight="400.0" prefWidth="485.0">
+         <children>
+            <TextField id="title-field" fx:id="titleField" editable="false" layoutX="83.0" layoutY="55.0" prefHeight="38.0" prefWidth="347.0" text="Add given medicine dose:">
+               <font>
+                  <Font name="Georgia" size="20.0" />
+               </font>
+            </TextField>
+            <TextField id="type-med-field" fx:id="typeMedField" editable="false" layoutX="31.0" layoutY="123.0" prefHeight="25.0" prefWidth="201.0" text="Type of medicine:">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font></TextField>
+            <ChoiceBox id="type-med-choice-box" fx:id="typeMedChoiceBox" layoutX="281.0" layoutY="123.0" prefWidth="150.0" />
+            <TextField id="form-med-field" fx:id="formMedField" editable="false" layoutX="31.0" layoutY="168.0" prefHeight="25.0" prefWidth="201.0" text="Form of medicine:">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font></TextField>
+            <ChoiceBox id="form-med-choice-box" fx:id="formMedChoiceBox" layoutX="281.0" layoutY="168.0" prefWidth="150.0" />
+            <TextField id="dose-field" fx:id="doseField" editable="false" layoutX="31.0" layoutY="218.0" prefHeight="25.0" prefWidth="201.0" text="Dose:">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font></TextField>
+            <ChoiceBox id="dose-choice-box" fx:id="doseChoiceBox" layoutX="281.0" layoutY="218.0" prefWidth="150.0" />
+            <TextField id="date-field" fx:id="dateField" editable="false" layoutX="31.0" layoutY="262.0" prefHeight="25.0" prefWidth="201.0" text="Date (DD.MM.YYYY):">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+            </TextField>
+            <TextField id="given-date-field" fx:id="givenDateField" layoutX="282.0" layoutY="262.0" promptText="DD.MM.YYYY">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+            </TextField>
+            <TextField id="time-field" fx:id="timeField" editable="false" layoutX="31.0" layoutY="301.0" prefHeight="25.0" prefWidth="201.0" text="Time (HH:MM):">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+            </TextField>
+            <TextField id="given-time-field" fx:id="givenTimeField" layoutX="282.0" layoutY="301.0" promptText="HH:MM">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+            </TextField>
+         </children></Pane>
+   </children>
+</HBox>

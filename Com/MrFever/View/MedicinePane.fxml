@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.MedicineController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="400.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/MrFeverMini.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+     <Pane prefHeight="400.0" prefWidth="485.0">
+         <children>
+            <Accordion id="medicine-list" fx:id="medicineList" layoutX="10.0" layoutY="67.0" prefHeight="311.0" prefWidth="461.0">
+              <panes>
+                <TitledPane id="paracetamol-pane" fx:id="paracetamolPane" animated="false" prefHeight="246.0" prefWidth="462.0" text=" Paracetamol / Acetaminophen">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea editable="false" layoutX="6.0" layoutY="9.0" prefHeight="191.0" prefWidth="447.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane id="ibuprofen-pane" fx:id="ibuprofenPane" animated="false" text="Ibuprofen">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea editable="false" layoutX="9.0" layoutY="9.0" prefHeight="191.0" prefWidth="442.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane id="aspirin-pane" fx:id="aspirinPane" animated="false" text="Aspirin">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea editable="false" layoutX="8.0" layoutY="8.0" prefHeight="192.0" prefWidth="444.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                  <TitledPane id="mixed-med-pane" fx:id="mixedMedPane" animated="false" layoutX="10.0" layoutY="61.0" text="Ibuprofen with Paracetamol / Acetaminophen">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea editable="false" layoutX="9.0" layoutY="9.0" prefHeight="191.0" prefWidth="443.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+            <TextField id="title-med-field" fx:id="titleMedField" editable="false" layoutX="20.0" layoutY="14.0" text="Available medicines:">
+               <font>
+                  <Font name="Georgia" size="20.0" />
+               </font>
+            </TextField>
+         </children></Pane>
+   </children>
+</HBox>

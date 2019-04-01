@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.DeleteChildController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="400.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/MrFeverMini.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+     <Pane prefHeight="400.0" prefWidth="485.0">
+         <children>
+            <TextField id="title-field" fx:id="titleField" editable="false" layoutX="83.0" layoutY="55.0" prefHeight="38.0" prefWidth="347.0" text="Choose child profile to be deleted:">
+               <font>
+                  <Font name="Georgia" size="20.0" />
+               </font>
+            </TextField>
+            <ChoiceBox id="profile-choice-box" fx:id="profileChoiceBox" layoutX="137.0" layoutY="154.0" prefHeight="25.0" prefWidth="224.0" />
+            <TextField id="confirmation-field" fx:id="confirmationField" editable="false" layoutX="91.0" layoutY="256.0" prefHeight="25.0" prefWidth="339.0" />
+         </children></Pane>
+   </children>
+</HBox>
