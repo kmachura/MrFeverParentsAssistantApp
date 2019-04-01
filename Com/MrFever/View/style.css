@@ -1,7 +1,6 @@
 .text-area {
 	 -fx-background-image: url("Resources/start_background.png"); 
 	 -fx-background-repeat: no-repeat;
-	
 	 -fx-text-fill: #191970;
 	 -fx-highlight-fill: #FFFFFF; 
 	 -fx-highlight-text-fill: #191970;
@@ -49,3 +48,21 @@
     -fx-base: #FFFFFF;
     -fx-background: #FFFFFF;
 }
+
+#main-pane {
+     -fx-background-image: url("../Resources/main_background.png"); 
+	 -fx-background-repeat: no-repeat;
+}
+
+#child-button {
+	-fx-background-image: url("../Resources/child.png");  
+}
+
+#med-button {
+		-fx-background-image: url("../Resources/med.png");  
+}
+#exit-button {
+	-fx-background-image: url("../Resources/exit.png");  
+}
+
+
