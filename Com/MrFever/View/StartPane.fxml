@@ -17,7 +17,7 @@
          <children>
             <ImageView id="mrFeverImg" fx:id="mrFeverImage" fitHeight="620.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Resources/panGoraczka.png" />
+                  <Image url="@../Resources/mrFever.png" />
                </image>
             </ImageView>
             <VBox>
