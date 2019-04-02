@@ -26,49 +26,60 @@
             </ImageView>
          </children>
       </VBox>
-     <Pane prefHeight="400.0" prefWidth="485.0">
+      <VBox prefHeight="400.0" prefWidth="486.0">
          <children>
-            <TextField id="title-children-field" fx:id="titleChildrenField" editable="false" layoutX="20.0" layoutY="14.0" text="Children profiles:">
-               <font>
-                  <Font name="Georgia" size="20.0" />
-               </font>
-            </TextField>
-            <Accordion fx:id="childrenOptions" layoutX="40.0" layoutY="82.0" prefHeight="276.0" prefWidth="405.0">
-              <panes>
-                <TitledPane id="view-child-profile" fx:id="viewChildProfile" animated="false" text="View list of children profiles">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ChoiceBox id="children-view-choice-box" fx:id="childrenViewChoiceBox" layoutX="127.0" layoutY="113.0" prefWidth="150.0" />
-                              <TextField editable="false" layoutX="106.0" layoutY="62.0" prefHeight="26.0" prefWidth="198.0" text="Choose one of the children profile:">
-                                 <font>
-                                    <Font name="Georgia" size="12.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                <TitledPane id="add-child-profile" fx:id="addChildProfile" animated="false" text="Add child profile">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Button id="add-child-button" fx:id="addChildButton" layoutX="115.0" layoutY="81.0" mnemonicParsing="false" text="Add child profile" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                <TitledPane id="delete-child-profile" fx:id="deleteChildProfile" animated="false" text="Delete child profile ">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Button id="delete-child-button" fx:id="deleteChildButton" layoutX="107.0" layoutY="81.0" mnemonicParsing="false" text="Delete child profile" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-              </panes>
-            </Accordion>
-         </children></Pane>
+           <Pane prefHeight="511.0" prefWidth="486.0">
+               <children>
+                  <TextField id="title-children-field" fx:id="titleChildrenField" editable="false" layoutX="20.0" layoutY="14.0" text="Children profiles:">
+                     <font>
+                        <Font name="Georgia" size="20.0" />
+                     </font>
+                  </TextField>
+                  <Accordion fx:id="childrenOptions" layoutX="40.0" layoutY="82.0" prefHeight="251.0" prefWidth="405.0">
+                    <panes>
+                      <TitledPane id="view-child-profile" fx:id="viewChildProfile" animated="false" text="View list of children profiles">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ChoiceBox id="children-view-choice-box" fx:id="childrenViewChoiceBox" layoutX="127.0" layoutY="113.0" prefWidth="150.0" />
+                                    <TextField editable="false" layoutX="106.0" layoutY="62.0" prefHeight="26.0" prefWidth="198.0" text="Choose one of the children profile:">
+                                       <font>
+                                          <Font name="Georgia" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                      <TitledPane id="add-child-profile" fx:id="addChildProfile" animated="false" text="Add child profile">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button id="add-child-button" fx:id="addChildButton" layoutX="115.0" layoutY="81.0" mnemonicParsing="false" text="Add child profile" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                      <TitledPane id="delete-child-profile" fx:id="deleteChildProfile" animated="false" text="Delete child profile ">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button id="delete-child-button" fx:id="deleteChildButton" layoutX="107.0" layoutY="81.0" mnemonicParsing="false" text="Delete child profile" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </Pane>
+            <HBox>
+               <children>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="430.0" />
+                  <Button id="return-button" fx:id="returnButton" mnemonicParsing="false" prefHeight="20.0" prefWidth="45.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </HBox>
