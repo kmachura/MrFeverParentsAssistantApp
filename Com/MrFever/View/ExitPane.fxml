@@ -22,13 +22,13 @@
             </ImageView>
             <VBox>
                <children>
-                  <TextArea id="exitTextArea" fx:id="welcomeTextArea" depthTest="DISABLE" editable="false" prefHeight="150.0" prefWidth="228.0" text="Thank you for using the app. See you next time!&#10;Bye bye..." wrapText="true">
+                  <TextArea id="exit-text-area" fx:id="exitTextArea" depthTest="DISABLE" editable="false" prefHeight="150.0" prefWidth="228.0" text="Thank you for using the app. See you next time!&#10;Bye bye..." wrapText="true">
                      <font>
                         <Font name="Bookman Old Style Italic" size="20.0" />
                      </font>
                   </TextArea>
                   <Separator prefHeight="40.0" prefWidth="200.0" />
-                  <Button id="exitAppButton" fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Exit">
+                  <Button id="exit-app-button" fx:id="exitAppButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Exit">
                      <VBox.margin>
                         <Insets left="45.0" />
                      </VBox.margin></Button>

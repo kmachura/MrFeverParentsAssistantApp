@@ -92,7 +92,11 @@
             </TabPane>
             <HBox prefHeight="27.0" prefWidth="488.0">
                <children>
-                  <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="425.0" />
+                  <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="325.0" />
+                  <Button id="add-temperature-button" fx:id="addTemperatureButton" mnemonicParsing="false" prefHeight="50.0" />
+                  <Separator maxWidth="200.0" orientation="VERTICAL" prefHeight="200.0" />
+                  <Button id="add-med-dose-button" fx:id="addMedDoseButton" mnemonicParsing="false" prefWidth="65.0" />
+                  <Separator orientation="VERTICAL" prefHeight="50.0" />
                   <Button id="return-button" fx:id="returnButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" />
                </children>
             </HBox>

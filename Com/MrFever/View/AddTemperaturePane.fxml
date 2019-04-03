@@ -27,29 +27,27 @@
          <children>
            <Pane prefHeight="383.0" prefWidth="488.0">
                <children>
-                  <TextField id="title-field" fx:id="titleField" editable="false" layoutX="84.0" layoutY="22.0" prefHeight="38.0" prefWidth="347.0" text="Add given medicine dose:">
+                  <TextField id="title-field" fx:id="titleField" editable="false" layoutX="81.0" layoutY="44.0" prefHeight="38.0" prefWidth="347.0" text="Add body temperature level:">
                      <font>
                         <Font name="Georgia" size="20.0" />
                      </font>
                   </TextField>
-                  <TextField id="type-med-field" fx:id="typeMedField" editable="false" layoutX="31.0" layoutY="91.0" prefHeight="25.0" prefWidth="201.0" text="Type of medicine:">
+                  <TextField id="temperature-level-field" fx:id="temperatureLevelField" editable="false" layoutX="31.0" layoutY="125.0" prefHeight="25.0" prefWidth="201.0" text="Temperature level:">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <ChoiceBox id="type-med-choice-box" fx:id="typeMedChoiceBox" layoutX="284.0" layoutY="91.0" prefWidth="150.0" />
-                  <TextField id="form-med-field" fx:id="formMedField" editable="false" layoutX="31.0" layoutY="132.0" prefHeight="25.0" prefWidth="201.0" text="Form of medicine:">
+                  <TextField id="given-temperature-level-field" fx:id="givenTemperatureLevelField" layoutX="284.0" layoutY="125.0" promptText="Temperature level">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <ChoiceBox id="form-med-choice-box" fx:id="formMedChoiceBox" layoutX="284.0" layoutY="132.0" prefWidth="150.0" />
-                  <TextField id="dose-field" fx:id="doseField" editable="false" layoutX="31.0" layoutY="174.0" prefHeight="25.0" prefWidth="201.0" text="Dose:">
+                  <TextField id="place-of-measurement-field" fx:id="placeOfMeasurementField" editable="false" layoutX="31.0" layoutY="168.0" prefHeight="25.0" prefWidth="201.0" text="Place of measurement:">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <ChoiceBox id="dose-choice-box" fx:id="doseChoiceBox" layoutX="284.0" layoutY="174.0" prefWidth="150.0" />
+                  <ChoiceBox id="place-of-measurement-choice-box" fx:id="placeOfMeasurementChoiceBox" layoutX="284.0" layoutY="168.0" prefWidth="150.0" />
                   <TextField id="date-field" fx:id="dateField" editable="false" layoutX="31.0" layoutY="216.0" prefHeight="25.0" prefWidth="201.0" text="Date (DD.MM.YYYY):">
                      <font>
                         <Font name="Georgia" size="12.0" />
