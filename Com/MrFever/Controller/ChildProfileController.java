@@ -74,10 +74,40 @@ public class ChildProfileController implements  Initializable {
     private TableColumn<?, ?> doseColumn;
 
     @FXML
+    private Button addTemperatureButton;
+
+    @FXML
+    private Button addMedDoseButton;
+    
+    @FXML
     private Button returnButton;
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+    	
+    	addTemperatureButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					goToAddTemperaturePane(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+    	
+    	addMedDoseButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					goToAddMedicineDosePane(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 
 		returnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -93,6 +123,28 @@ public class ChildProfileController implements  Initializable {
 		
 	}
 
+    private void goToAddTemperaturePane(ActionEvent e) throws IOException {
+		System.out.println("Button was clicked!");
+		System.out.println(e.getEventType());
+		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/AddTemperaturePane.fxml"));
+		Scene home_page_scene = new Scene(home_page_parent);
+		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		app_stage.hide(); // optional
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+	}
+    
+    private void goToAddMedicineDosePane(ActionEvent e) throws IOException {
+		System.out.println("Button was clicked!");
+		System.out.println(e.getEventType());
+		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/AddMedicineDosePane.fxml"));
+		Scene home_page_scene = new Scene(home_page_parent);
+		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		app_stage.hide(); // optional
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+	}
+    
 	private void goToChildrenPane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
