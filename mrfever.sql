@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `children`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `children` (
   `name` varchar(20) NOT NULL,
-  `dateofbirth` date NOT NULL,
+  `dateofbirth` varchar(20) NOT NULL,
   `sex` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`name`,`dateofbirth`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -38,7 +38,7 @@ CREATE TABLE `children` (
 
 LOCK TABLES `children` WRITE;
 /*!40000 ALTER TABLE `children` DISABLE KEYS */;
-INSERT INTO `children` VALUES ('Justine','2016-02-03','girl'),('Thomas','2013-01-05','boy');
+INSERT INTO `children` VALUES ('Justine','03.02.2016.','girl'),('Thomas','05.01.2013.','boy');
 /*!40000 ALTER TABLE `children` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,16 +50,16 @@ DROP TABLE IF EXISTS `givenmedicines`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `givenmedicines` (
-  `dateofgiving` date NOT NULL,
-  `timeofgiving` time NOT NULL,
+  `dateofgiving` varchar(20) NOT NULL,
+  `timeofgiving` varchar(20) NOT NULL,
   `typeofmedicine` varchar(50) DEFAULT NULL,
   `formofmedicine` varchar(20) DEFAULT NULL,
   `doseofmedicine` varchar(20) DEFAULT NULL,
   `towhom` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`dateofgiving`,`timeofgiving`),
   KEY `typeofmedicine` (`typeofmedicine`),
-  KEY `towhom` (`towhom`),
-  CONSTRAINT `fk_childname` FOREIGN KEY (`towhom`) REFERENCES `children` (`name`),
+  KEY `fk_childname` (`towhom`),
+  CONSTRAINT `fk_childname` FOREIGN KEY (`towhom`) REFERENCES `children` (`name`) ON DELETE CASCADE,
   CONSTRAINT `fk_medicine` FOREIGN KEY (`typeofmedicine`) REFERENCES `medicineslist` (`nameofmedicine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -70,7 +70,7 @@ CREATE TABLE `givenmedicines` (
 
 LOCK TABLES `givenmedicines` WRITE;
 /*!40000 ALTER TABLE `givenmedicines` DISABLE KEYS */;
-INSERT INTO `givenmedicines` VALUES ('2018-05-01','19:30:00','paracetamol','syrup','12,00 ml','Thomas'),('2018-05-02','02:15:00','ibuprofenum','syrup','3,75 ml','Thomas'),('2018-05-02','21:45:00','paracetamol','syrup','7,50 ml','Justine'),('2018-05-03','16:00:00','ibuprofenum','syrup','2,50 ml','Justine');
+INSERT INTO `givenmedicines` VALUES ('01.05.2018.','19:30','paracetamol','syrup','12,00 ml','Thomas'),('02.05.2018.','02:15','ibuprofenum','syrup','3,75 ml','Thomas'),('02.05.2018.','21:45','paracetamol','syrup','7,50 ml','Justine'),('03.05.2018.','16:00','ibuprofenum','syrup','2,50 ml','Justine');
 /*!40000 ALTER TABLE `givenmedicines` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `medicineslist` (
 
 LOCK TABLES `medicineslist` WRITE;
 /*!40000 ALTER TABLE `medicineslist` DISABLE KEYS */;
-INSERT INTO `medicineslist` VALUES ('ibuprofenum'),('mix of paracetamol & ibuprofenum'),('paracetamol');
+INSERT INTO `medicineslist` VALUES ('aspirin'),('ibuprofenum'),('mix of paracetamol & ibuprofenum'),('paracetamol');
 /*!40000 ALTER TABLE `medicineslist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,14 +133,14 @@ DROP TABLE IF EXISTS `temperature`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `temperature` (
-  `dateofmeasurement` date NOT NULL,
-  `timeofmeasurement` time NOT NULL,
+  `dateofmeasurement` varchar(20) NOT NULL,
+  `timeofmeasurement` varchar(20) NOT NULL,
   `placeofmeasurement` varchar(20) DEFAULT NULL,
   `leveloftemperature` double(4,2) DEFAULT NULL,
   `whose` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`dateofmeasurement`,`timeofmeasurement`),
   KEY `fk_whosetemperature` (`whose`),
-  CONSTRAINT `fk_whosetemperature` FOREIGN KEY (`whose`) REFERENCES `children` (`name`)
+  CONSTRAINT `fk_whosetemperature` FOREIGN KEY (`whose`) REFERENCES `children` (`name`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -150,9 +150,17 @@ CREATE TABLE `temperature` (
 
 LOCK TABLES `temperature` WRITE;
 /*!40000 ALTER TABLE `temperature` DISABLE KEYS */;
-INSERT INTO `temperature` VALUES ('2018-05-01','19:27:00','ear',38.50,'Thomas'),('2018-05-02','02:11:00','forehead',38.70,'Thomas'),('2018-05-02','21:43:00','ear',38.80,'Justine'),('2018-05-03','15:57:00','forehead',38.90,'Justine');
+INSERT INTO `temperature` VALUES ('01.05.2018.','19:27','ear',38.50,'Thomas'),('02.05.2018.','21:43','ear',38.80,'Justine'),('02.05.2019.','02:11','forehead',38.70,'Thomas'),('03.05.2018.','15:57','forehead',38.90,'Justine');
 /*!40000 ALTER TABLE `temperature` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'mrfever'
+--
+
+--
+-- Dumping routines for database 'mrfever'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -163,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-15 20:41:08
+-- Dump completed on 2019-04-24  0:47:29
