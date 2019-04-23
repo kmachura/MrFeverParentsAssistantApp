@@ -2,8 +2,10 @@ package Com.MrFever.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Com.MrFever.Dao.ChildrenDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,44 +21,105 @@ import javafx.stage.Stage;
 
 public class DeleteChildController implements Initializable {
 
-    @FXML
-    private TextField titleField;
+	public static String profileToBeDeleted = null;
 
-    @FXML
-    private ChoiceBox<?> profileChoiceBox;
+	ChildrenDao chDao = new ChildrenDao();
 
-    @FXML
-    private TextField confirmationField;
+	@FXML
+	private TextField titleField;
 
-    @FXML
-    private Button returnButton;
+	@FXML
+	private ChoiceBox<String> profileChoiceBox;
 
-    @Override
-   	public void initialize(URL arg0, ResourceBundle arg1) {
+	@FXML
+	private TextField confirmationField;
 
-   		returnButton.setOnAction(new EventHandler<ActionEvent>() {
-   			@Override
-   			public void handle(ActionEvent event) {
-   				try {
-   					goToChildrenPane(event);
-   				} catch (IOException e) {
-   					// TODO Auto-generated catch block
-   					e.printStackTrace();
-   				}
-   			}
-   		});
-   		
-   	}
+	@FXML
+	private Button deleteButton;
 
-   	private void goToChildrenPane(ActionEvent e) throws IOException {
-   		System.out.println("Button was clicked!");
-   		System.out.println(e.getEventType());
-   		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/ChildrenPane.fxml"));
-   		Scene home_page_scene = new Scene(home_page_parent);
-   		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-   		app_stage.hide(); // optional
-   		app_stage.setScene(home_page_scene);
-   		app_stage.show();
-   	}
+	@FXML
+	private Button returnButton;
 
-   }
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		try {
+
+			getProfileChoiceBox().getItems().add(0, "Choose child");
+			getProfileChoiceBox().getSelectionModel().select(0);
+			getProfileChoiceBox().getItems().addAll(chDao.selectChildrenName());
+		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		profileChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			profileToBeDeleted = newValue;
+		});
+
+		getProfileChoiceBox().setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+
+				confirmationField.setText("Are you sure to delete " + getProfileChoiceBox().getValue() + "'s profile?");
+
+			}
+		});
+
+		deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					goToDeletedProfilePane(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		returnButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					goToChildrenPane(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
+
+	private void goToChildrenPane(ActionEvent e) throws IOException {
+		System.out.println("Button was clicked!");
+		System.out.println(e.getEventType());
+		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/ChildrenPane.fxml"));
+		Scene home_page_scene = new Scene(home_page_parent);
+		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		app_stage.hide(); // optional
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+	}
+
+	private void goToDeletedProfilePane(ActionEvent e) throws IOException {
+		System.out.println("Button was clicked!");
+		System.out.println(e.getEventType());
+		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/DeletedProfilePane.fxml"));
+		Scene home_page_scene = new Scene(home_page_parent);
+		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		app_stage.hide(); // optional
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+	}
+
+	public ChoiceBox<String> getProfileChoiceBox() {
+		return profileChoiceBox;
+	}
+
+	public void setProfileChoiceBox(ChoiceBox<String> profileChoiceBox) {
+		this.profileChoiceBox = profileChoiceBox;
+	}
+
+}

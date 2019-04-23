@@ -2,8 +2,10 @@ package Com.MrFever.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Com.MrFever.Dao.ChildProfileDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,14 +19,15 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ChildProfileController implements  Initializable {
 	
-	ChildrenController childrenController = new ChildrenController();
-
-    @FXML
+	ChildProfileDao chPDao = new ChildProfileDao();
+	
+	@FXML
     private Tab childProfileTab;
 
     @FXML
@@ -87,7 +90,20 @@ public class ChildProfileController implements  Initializable {
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	
-    	System.out.println(childrenController.chosenChild);
+    	System.out.println(ChildrenController.chosenChild);
+    	
+    	try {
+			chPDao.viewChildDetails();
+		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+    	nameField.setText("Child's name: " + ChildProfileDao.name);
+    	birthField.setText("Child's date of birth: " + ChildProfileDao.dateofbirth);
+    	String sexImage = ChildProfileDao.sex;
+    	
+    	ImageView girlOrBoy = new ImageView(getClass().getResource("../Resources/" + sexImage + ".png").toExternalForm());
     	
     	addTemperatureButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -127,7 +143,7 @@ public class ChildProfileController implements  Initializable {
 		
 	}
 
-    private void goToAddTemperaturePane(ActionEvent e) throws IOException {
+	private void goToAddTemperaturePane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
 		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/AddTemperaturePane.fxml"));

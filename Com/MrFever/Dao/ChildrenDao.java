@@ -52,7 +52,6 @@ public class ChildrenDao {
             String name = null;
             while(resultSet.next()) {
                 name = resultSet.getString("name");
-                System.out.println(name);
                 allNames.add(name);
                
               

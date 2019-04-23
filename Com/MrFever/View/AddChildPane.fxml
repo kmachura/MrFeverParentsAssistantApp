@@ -38,6 +38,7 @@
                   <TextField id="birthday-field" fx:id="birthdayField" layoutX="282.0" layoutY="168.0" promptText="DD.MM.YYYY" />
                   <TextField id="give-sex-field" fx:id="giveSexField" editable="false" layoutX="31.0" layoutY="218.0" prefHeight="25.0" prefWidth="201.0" text="Child's sex:" />
                   <ChoiceBox id="sex-choice-box" fx:id="sexChoiceBox" layoutX="281.0" layoutY="218.0" prefWidth="150.0" />
+                  <Button id="add-profile-button" fx:id="addProfileButton" layoutX="168.0" layoutY="269.0" mnemonicParsing="false" text="Add Profile" />
                </children>
             </Pane>
             <HBox prefHeight="58.0" prefWidth="488.0">

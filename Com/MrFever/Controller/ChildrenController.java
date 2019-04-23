@@ -23,9 +23,9 @@ import javafx.stage.Stage;
 
 public class ChildrenController implements Initializable {
 
-	ChildrenDao chdao = new ChildrenDao();
+	ChildrenDao chDao = new ChildrenDao();
 
-	String chosenChild;
+	public static String chosenChild;
 
 	@FXML
 	private TextField titleChildrenField;
@@ -62,7 +62,9 @@ public class ChildrenController implements Initializable {
 
 		try {
 
-			childrenViewChoiceBox.getItems().addAll(chdao.selectChildrenName());
+			childrenViewChoiceBox.getItems().addAll(chDao.selectChildrenName());
+			childrenViewChoiceBox.getItems().add(0, "Choose child");
+			childrenViewChoiceBox.getSelectionModel().select(0);
 
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
@@ -74,13 +76,10 @@ public class ChildrenController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		childrenViewChoiceBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
-			chosenChild = newValue.toString();
-			} );
-		
-		
-	         
+
+		childrenViewChoiceBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+			chosenChild = newValue;
+		});
 
 		showButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

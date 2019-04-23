@@ -38,11 +38,7 @@
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
                                           <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="350.0" />
-                                          <ImageView id="girl-or-boy" fx:id="girlOrBoy" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Resources/girl.png" />
-                                             </image>
-                                          </ImageView>
+                                          <ImageView id="girl-or-boy" fx:id="girlOrBoy" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                                        </children>
                                     </HBox>
                                     <Separator prefHeight="25.0" prefWidth="200.0" />
