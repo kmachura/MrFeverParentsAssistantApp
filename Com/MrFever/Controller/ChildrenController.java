@@ -2,8 +2,10 @@ package Com.MrFever.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Com.MrFever.Dao.ChildrenDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,37 +23,78 @@ import javafx.stage.Stage;
 
 public class ChildrenController implements Initializable {
 
-    @FXML
-    private TextField titleChildrenField;
+	ChildrenDao chdao = new ChildrenDao();
 
-    @FXML
-    private Accordion childrenOptions;
+	String chosenChild;
 
-    @FXML
-    private TitledPane viewChildProfile;
+	@FXML
+	private TextField titleChildrenField;
 
-    @FXML
-    private ChoiceBox<?> childrenViewChoiceBox;
+	@FXML
+	private Accordion childrenOptions;
 
-    @FXML
-    private TitledPane addChildProfile;
+	@FXML
+	private TitledPane viewChildProfile;
 
-    @FXML
-    private Button addChildButton;
+	@FXML
+	private ChoiceBox<String> childrenViewChoiceBox;
 
-    @FXML
-    private TitledPane deleteChildProfile;
+	@FXML
+	private Button showButton;
 
-    @FXML
-    private Button deleteChildButton;
+	@FXML
+	private TitledPane addChildProfile;
 
-    @FXML
-    private Button returnButton;
+	@FXML
+	private Button addChildButton;
 
-    @Override
+	@FXML
+	private TitledPane deleteChildProfile;
+
+	@FXML
+	private Button deleteChildButton;
+
+	@FXML
+	private Button returnButton;
+
+	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-    	addChildButton.setOnAction(new EventHandler<ActionEvent>() {
+		try {
+
+			childrenViewChoiceBox.getItems().addAll(chdao.selectChildrenName());
+
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		childrenViewChoiceBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+			chosenChild = newValue.toString();
+			} );
+		
+		
+	         
+
+		showButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					goToChildProfilePane(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		addChildButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
@@ -62,8 +105,8 @@ public class ChildrenController implements Initializable {
 				}
 			}
 		});
-    	
-    	deleteChildButton.setOnAction(new EventHandler<ActionEvent>() {
+
+		deleteChildButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
@@ -74,7 +117,7 @@ public class ChildrenController implements Initializable {
 				}
 			}
 		});
-    	
+
 		returnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -86,10 +129,21 @@ public class ChildrenController implements Initializable {
 				}
 			}
 		});
-		
+
 	}
 
-    private void goToAddChildPane(ActionEvent e) throws IOException {
+	private void goToChildProfilePane(ActionEvent e) throws IOException {
+		System.out.println("Button was clicked!");
+		System.out.println(e.getEventType());
+		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/ChildProfilePane.fxml"));
+		Scene home_page_scene = new Scene(home_page_parent);
+		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		app_stage.hide(); // optional
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+	}
+
+	private void goToAddChildPane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
 		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/AddChildPane.fxml"));
@@ -99,8 +153,8 @@ public class ChildrenController implements Initializable {
 		app_stage.setScene(home_page_scene);
 		app_stage.show();
 	}
-    
-    private void goToDeleteChildPane(ActionEvent e) throws IOException {
+
+	private void goToDeleteChildPane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
 		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/DeleteChildPane.fxml"));
@@ -110,7 +164,7 @@ public class ChildrenController implements Initializable {
 		app_stage.setScene(home_page_scene);
 		app_stage.show();
 	}
-    
+
 	private void goToMainPane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
@@ -120,6 +174,14 @@ public class ChildrenController implements Initializable {
 		app_stage.hide(); // optional
 		app_stage.setScene(home_page_scene);
 		app_stage.show();
+	}
+
+	public ChoiceBox<String> getChildrenViewChoiceBox() {
+		return childrenViewChoiceBox;
+	}
+
+	public void setChildrenViewChoiceBox(ChoiceBox<String> childrenViewChoiceBox) {
+		this.childrenViewChoiceBox = childrenViewChoiceBox;
 	}
 
 }

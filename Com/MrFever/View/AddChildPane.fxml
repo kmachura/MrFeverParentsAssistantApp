@@ -42,7 +42,8 @@
             </Pane>
             <HBox prefHeight="58.0" prefWidth="488.0">
                <children>
-                  <Separator orientation="VERTICAL" prefHeight="44.0" prefWidth="430.0" />
+                  <Separator orientation="VERTICAL" prefHeight="44.0" prefWidth="385.0" />
+                  <Button id="clean-button" fx:id="cleanButton" mnemonicParsing="false" prefWidth="48.0" />
                   <Button id="return-button" fx:id="returnButton" mnemonicParsing="false" prefHeight="20.0" prefWidth="45.0" />
                </children>
             </HBox>

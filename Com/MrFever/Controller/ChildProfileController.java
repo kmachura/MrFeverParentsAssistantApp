@@ -21,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ChildProfileController implements  Initializable {
+	
+	ChildrenController childrenController = new ChildrenController();
 
     @FXML
     private Tab childProfileTab;
@@ -84,6 +86,8 @@ public class ChildProfileController implements  Initializable {
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+    	
+    	System.out.println(childrenController.chosenChild);
     	
     	addTemperatureButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
