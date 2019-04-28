@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import Com.MrFever.Dao.ChildProfileDao;
+import Com.MrFever.Dao.TemperatureDao;
+import Com.MrFever.Model.Temperature;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,15 +20,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class ChildProfileController implements  Initializable {
 	
 	ChildProfileDao chPDao = new ChildProfileDao();
+	TemperatureDao tDao = new TemperatureDao();
+	Temperature temp = new Temperature();
 	
 	@FXML
     private Tab childProfileTab;
@@ -43,19 +49,19 @@ public class ChildProfileController implements  Initializable {
     private Tab temperatureTab;
 
     @FXML
-    private TableView<?> temperatureTable;
+    private TableView<Temperature> temperatureTable;
 
     @FXML
-    private TableColumn<?, ?> dateColumn;
+    private TableColumn<Temperature, String> dateColumn;
 
     @FXML
-    private TableColumn<?, ?> timeColumn;
+    private TableColumn<Temperature, String> timeColumn;
 
     @FXML
-    private TableColumn<?, ?> placeColumn;
+    private TableColumn<Temperature, String> placeColumn;
 
     @FXML
-    private TableColumn<?, ?> levelColumn;
+    private TableColumn<Temperature, Double> levelColumn;
 
     @FXML
     private Tab medicinesTab;
@@ -90,8 +96,6 @@ public class ChildProfileController implements  Initializable {
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	
-    	System.out.println(ChildrenController.chosenChild);
-    	
     	try {
 			chPDao.viewChildDetails();
 		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
@@ -100,10 +104,33 @@ public class ChildProfileController implements  Initializable {
 		}
     	
     	nameField.setText("Child's name: " + ChildProfileDao.name);
-    	birthField.setText("Child's date of birth: " + ChildProfileDao.dateofbirth);
+    	birthField.setText("Child's date of birth: " + ChildProfileDao.dateOfBirth);
     	String sexImage = ChildProfileDao.sex;
     	
     	ImageView girlOrBoy = new ImageView(getClass().getResource("../Resources/" + sexImage + ".png").toExternalForm());
+  
+    	/*
+    	try {
+			tDao.viewTemperatures();
+		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+);
+    	
+    	
+
+    
+/*   	initTable();
+        
+        tableData.addAll(tDao.temperatureList.stream().map(this::convertTempToModel).collect(Collectors.toList()));
+    }
+    }
+
+   
+   */ 	
+    	
     	
     	addTemperatureButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -142,6 +169,22 @@ public class ChildProfileController implements  Initializable {
 		});
 		
 	}
+	
+//	 private void initTable() {
+	//        temperatureTable.setItems(tDao.temperatureList);
+
+	  //      dateColumn.setCellValueFactory(data -> data.getValue().dateProperty()); // here is where tha magic happens :)
+
+	    //    timeColumn.setCellValueFactory(data -> data.getValue().timeProperty()); // this sets the cells value from
+	                                                                                       // the model.
+	      //  levelColumn.setCellValueFactory(data -> data.getValue().levelProperty());
+	        
+	        //placeColumn.setCellValueFactory(data -> data.getValue().placeProperty());
+	   // }
+
+	    //private Temperature convertTempToModel(Temperature temp) {
+	     //   return new Temperature(temp.getLevelOfTemperature(), temp.getTimeOfMeasurement().toString(), temp.getPlaceOfMeasurement().toString(), temp.getDateOfMeasurement().toString());
+	   // }
 
 	private void goToAddTemperaturePane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");

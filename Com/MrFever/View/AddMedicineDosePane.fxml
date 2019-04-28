@@ -32,49 +32,51 @@
                         <Font name="Georgia" size="20.0" />
                      </font>
                   </TextField>
-                  <TextField id="type-med-field" fx:id="typeMedField" editable="false" layoutX="31.0" layoutY="91.0" prefHeight="25.0" prefWidth="201.0" text="Type of medicine:">
+                  <TextField id="type-med-field" fx:id="typeMedField" editable="false" layoutX="31.0" layoutY="91.0" prefHeight="25.0" prefWidth="142.0" text="Type of medicine:">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <ChoiceBox id="type-med-choice-box" fx:id="typeMedChoiceBox" layoutX="284.0" layoutY="91.0" prefWidth="150.0" />
-                  <TextField id="form-med-field" fx:id="formMedField" editable="false" layoutX="31.0" layoutY="132.0" prefHeight="25.0" prefWidth="201.0" text="Form of medicine:">
+                  <ChoiceBox id="type-med-choice-box" fx:id="typeMedChoiceBox" layoutX="204.0" layoutY="91.0" prefHeight="25.0" prefWidth="230.0" />
+                  <TextField id="form-med-field" fx:id="formMedField" editable="false" layoutX="31.0" layoutY="132.0" prefHeight="25.0" prefWidth="142.0" text="Form of medicine:">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <ChoiceBox id="form-med-choice-box" fx:id="formMedChoiceBox" layoutX="284.0" layoutY="132.0" prefWidth="150.0" />
-                  <TextField id="dose-field" fx:id="doseField" editable="false" layoutX="31.0" layoutY="174.0" prefHeight="25.0" prefWidth="201.0" text="Dose:">
+                  <ChoiceBox id="form-med-choice-box" fx:id="formMedChoiceBox" layoutX="204.0" layoutY="132.0" prefHeight="25.0" prefWidth="230.0" />
+                  <TextField id="dose-field" fx:id="doseField" editable="false" layoutX="31.0" layoutY="174.0" prefHeight="25.0" prefWidth="142.0" text="Dose:">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <ChoiceBox id="dose-choice-box" fx:id="doseChoiceBox" layoutX="284.0" layoutY="174.0" prefWidth="150.0" />
-                  <TextField id="date-field" fx:id="dateField" editable="false" layoutX="31.0" layoutY="216.0" prefHeight="25.0" prefWidth="201.0" text="Date (DD.MM.YYYY):">
+                  <TextField id="given-dose-field" fx:id="givenDoseField" layoutX="204.0" layoutY="174.0" prefHeight="25.0" prefWidth="230.0" />
+                  <TextField id="date-field" fx:id="dateField" editable="false" layoutX="31.0" layoutY="216.0" prefHeight="25.0" prefWidth="142.0" text="Date (DD.MM.YYYY):">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="given-date-field" fx:id="givenDateField" layoutX="284.0" layoutY="217.0" promptText="DD.MM.YYYY">
+                  <TextField id="given-date-field" fx:id="givenDateField" layoutX="204.0" layoutY="217.0" prefHeight="23.0" prefWidth="230.0" promptText="DD.MM.YYYY">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="time-field" fx:id="timeField" editable="false" layoutX="31.0" layoutY="259.0" prefHeight="25.0" prefWidth="201.0" text="Time (HH:MM):">
+                  <TextField id="time-field" fx:id="timeField" editable="false" layoutX="31.0" layoutY="259.0" prefHeight="25.0" prefWidth="142.0" text="Time (HH:MM):">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="given-time-field" fx:id="givenTimeField" layoutX="284.0" layoutY="260.0" promptText="HH:MM">
+                  <TextField id="given-time-field" fx:id="givenTimeField" layoutX="204.0" layoutY="260.0" prefHeight="23.0" prefWidth="230.0" promptText="HH:MM">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
+                  <Button id="add-medicine-button" fx:id="addMedicineButton" layoutX="138.0" layoutY="303.0" mnemonicParsing="false" text="Add medicine dose" />
                </children>
             </Pane>
             <HBox prefHeight="63.0" prefWidth="488.0">
                <children>
-                  <Separator orientation="VERTICAL" prefHeight="18.0" prefWidth="430.0" />
+                  <Separator maxHeight="40.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="390.0" />
+                  <Button id="clean-button" fx:id="cleanButton" maxWidth="45.0" mnemonicParsing="false" prefWidth="45.0" />
                   <Button id="return-button" fx:id="returnButton" mnemonicParsing="false" prefWidth="45.0" />
                </children>
             </HBox>

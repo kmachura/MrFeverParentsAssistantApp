@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -30,51 +29,18 @@
          <children>
            <Pane prefHeight="421.0" prefWidth="488.0">
                <children>
-                  <Accordion id="medicine-list" fx:id="medicineList" layoutX="10.0" layoutY="67.0" prefHeight="274.0" prefWidth="461.0">
-                    <panes>
-                      <TitledPane id="paracetamol-pane" fx:id="paracetamolPane" animated="false" prefHeight="246.0" prefWidth="462.0" text=" Paracetamol / Acetaminophen">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea editable="false" layoutX="6.0" layoutY="9.0" prefHeight="191.0" prefWidth="447.0" />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
-                      <TitledPane id="ibuprofen-pane" fx:id="ibuprofenPane" animated="false" text="Ibuprofen">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea editable="false" layoutX="9.0" layoutY="9.0" prefHeight="191.0" prefWidth="442.0" />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
-                      <TitledPane id="aspirin-pane" fx:id="aspirinPane" animated="false" text="Aspirin">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea editable="false" layoutX="8.0" layoutY="8.0" prefHeight="192.0" prefWidth="444.0" />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
-                        <TitledPane id="mixed-med-pane" fx:id="mixedMedPane" animated="false" layoutX="10.0" layoutY="61.0" text="Ibuprofen with Paracetamol / Acetaminophen">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea editable="false" layoutX="9.0" layoutY="9.0" prefHeight="191.0" prefWidth="443.0" />
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </TitledPane>
-                    </panes>
-                  </Accordion>
                   <TextField id="title-med-field" fx:id="titleMedField" editable="false" layoutX="20.0" layoutY="14.0" text="Available medicines:">
                      <font>
                         <Font name="Georgia" size="20.0" />
                      </font>
                   </TextField>
+                  <ChoiceBox id="med-choice-box" fx:id="medChoiceBox" layoutX="20.0" layoutY="74.0" prefHeight="25.0" prefWidth="423.0" />
+                  <TableView id="medicine-tab" fx:id="medicineTab" layoutX="20.0" layoutY="113.0" prefHeight="233.0" prefWidth="423.0">
+                    <columns>
+                      <TableColumn id="form-of-med-column" fx:id="formOfMedColumn" prefWidth="130.39994430541992" text="C1" />
+                      <TableColumn id="med-description-column" fx:id="medDescriptionColumn" minWidth="0.0" prefWidth="292.0000762939453" text="C2" />
+                    </columns>
+                  </TableView>
                </children>
             </Pane>
             <HBox prefHeight="100.0" prefWidth="200.0">

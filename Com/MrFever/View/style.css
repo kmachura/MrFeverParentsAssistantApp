@@ -1,5 +1,4 @@
 .text-area {
-	 -fx-background-image: url("Resources/start_background.png"); 
 	 -fx-background-repeat: no-repeat;
 	 -fx-text-fill: #191970;
 	 -fx-highlight-fill: #FFFFFF; 
@@ -75,6 +74,14 @@
 	-fx-background-color: #FFFFFF;
 }
 
+#clean-button {
+	-fx-background-image: url("../Resources/clean.png"); 
+	-fx-background-repeat: no-repeat; 
+}
+
+#clean-button:hover, #add-med-dose-button:selected {
+	-fx-background-color: #FFFFFF;
+}
 #add-med-dose-button {
 	-fx-background-image: url("../Resources/dose.png"); 
 	-fx-background-repeat: no-repeat; 

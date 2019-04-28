@@ -9,36 +9,7 @@ import java.util.List;
 
 public class ChildrenDao {
 	
-	
-    	public void selectChildren() throws ClassNotFoundException, SQLException, InterruptedException {
-    	
-    	final Connection conn = DbConnectionManager.getConn();
-    	Statement statement = conn.createStatement();
-        final String sqlQuery = "SELECT name, dateofbirth, sex FROM children";
-        ResultSet resultSet = statement.executeQuery(sqlQuery);
-        
-        String name = null;
-        String dateofbirth = null;
-        String sex = null;
-        while(resultSet.next()) {
-            name = resultSet.getString("name");
-            dateofbirth = resultSet.getString("dateofbirth");
-            sex = resultSet.getString("sex");
-            System.out.println(name + " " + dateofbirth + " " + sex);
-        }
-        
-        
-        if(statement != null) {
-            statement.close();
-        }
-        if(resultSet != null) {
-            resultSet.close();
-        }
-        if(conn != null) {
-            conn.close();
-        }
-        
-    }
+	String name;
     	
     	List<String> allNames = new ArrayList<>();
     	
@@ -49,7 +20,7 @@ public class ChildrenDao {
             final String sqlQuery = "SELECT name FROM children";
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             
-            String name = null;
+            name = null;
             while(resultSet.next()) {
                 name = resultSet.getString("name");
                 allNames.add(name);

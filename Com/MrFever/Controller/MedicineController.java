@@ -2,8 +2,11 @@ package Com.MrFever.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Com.MrFever.Dao.AddMedicineDoseDao;
+import Com.MrFever.Dao.MedicineDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,40 +15,79 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
 import javafx.stage.Stage;
 
 public class MedicineController implements Initializable {
+	
+	AddMedicineDoseDao aMDDao = new AddMedicineDoseDao();
+	MedicineDao mDao = new MedicineDao();
+	
+	public static String selectedMedicine = null;
 
-    @FXML
-    private Accordion medicineList;
+	  @FXML
+	    private TextField titleMedField;
 
-    @FXML
-    private TitledPane paracetamolPane;
+	    @FXML
+	    private ChoiceBox<String> medChoiceBox;
 
-    @FXML
-    private TitledPane ibuprofenPane;
+	    @FXML
+	    private TableView<?> medicineTab;
 
-    @FXML
-    private TitledPane aspirinPane;
+	    @FXML
+	    private TableColumn<?, ?> formOfMedColumn;
 
-    @FXML
-    private TitledPane mixedMedPane;
+	    @FXML
+	    private TableColumn<?, ?> medDescriptionColumn;
 
-    @FXML
-    private TextField titleMedField;
-    
-    @FXML
-    private Button addMedDoseButton;
-    
-    @FXML
-    private Button returnButton;
+
+	    @FXML
+	    private Button addMedDoseButton;
+
+	    @FXML
+	    private Button returnButton;
 
     @Override
    	public void initialize(URL arg0, ResourceBundle arg1) {
+    	
+    	// selecting givenTypeOfMedicine value in dedicated Choice Box
+    	try {
+
+			getMedChoiceBox().getItems().add(0, "Choose medicine");
+			getMedChoiceBox().getSelectionModel().select(0);
+			getMedChoiceBox().getItems().addAll(aMDDao.selectMedicines());
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		medChoiceBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+			selectedMedicine = newValue;
+		});
+		
+		getMedChoiceBox().setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+
+				try {
+					mDao.viewMedicineDescription();
+				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//fill the tableView
+			}
+		});
        	
     	addMedDoseButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -73,7 +115,15 @@ public class MedicineController implements Initializable {
    		
    	}
     
-    private void goToAddMedicineDosePane(ActionEvent e) throws IOException {
+    public ChoiceBox<String> getMedChoiceBox() {
+		return medChoiceBox;
+	}
+
+	public void setMedChoiceBox(ChoiceBox<String> medChoiceBox) {
+		this.medChoiceBox = medChoiceBox;
+	}
+
+	private void goToAddMedicineDosePane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
 		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/AddMedicineDosePane.fxml"));

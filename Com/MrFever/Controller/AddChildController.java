@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Com.MrFever.Dao.AddChildDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,28 +20,12 @@ import javafx.stage.Stage;
 
 public class AddChildController implements Initializable {
 	
-	AddChildDao achdao = new AddChildDao();
+	public static String givenNameOfChild = null;
 	
-	private String givenNameOfChild;
+	public static String givenBirthdayOfChild = null;
 	
-	private String givenBirthdayOfChild;
+	public static String selectedSex = null;
 	
-	public String getGivenNameOfChild() {
-		return givenNameOfChild;
-	}
-
-	public void setGivenNameOfChild(String givenNameOfChild) {
-		this.givenNameOfChild = givenNameOfChild;
-	}
-
-	public String getGivenBirthdayOfChild() {
-		return givenBirthdayOfChild;
-	}
-
-	public void setGivenBirthdayOfChild(String givenBirthdayOfChild) {
-		this.givenBirthdayOfChild = givenBirthdayOfChild;
-	}
-
 	@FXML
     private TextField titleField;
 
@@ -63,6 +46,9 @@ public class AddChildController implements Initializable {
 
     @FXML
     private ChoiceBox<String> sexChoiceBox;
+    
+    @FXML
+    private Button addProfileButton;
 
     @FXML
     private Button cleanButton;
@@ -78,7 +64,7 @@ public class AddChildController implements Initializable {
     		public void handle(KeyEvent event) {
     			System.out.println("Wygenerowano zdarzenie " + event.getEventType());	
     			nameField.textProperty().addListener((observable, oldValue, newValue) -> {
-    			    setGivenNameOfChild(newValue);
+    			    givenNameOfChild = newValue;
     			});
     		}
     	});
@@ -88,14 +74,31 @@ public class AddChildController implements Initializable {
     		public void handle(KeyEvent event) {
     			System.out.println("Wygenerowano zdarzenie " + event.getEventType());	
     			birthdayField.textProperty().addListener((observable, oldValue, newValue) -> {
-    			    setGivenBirthdayOfChild(newValue);
+    			    givenBirthdayOfChild = newValue;
     			});
     		}
     	});
     	
     	String[] availableChoices = {"girl", "boy"}; 
     	getSexChoiceBox().getItems().addAll(availableChoices);  
+    	sexChoiceBox.getItems().add(0, "Choose sex");
+		sexChoiceBox.getSelectionModel().select(0);
     	
+    	sexChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			selectedSex = newValue;
+		});
+    	
+    	addProfileButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					goToAddedProfilePane(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
     	
     	    	
     	cleanButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -121,6 +124,17 @@ public class AddChildController implements Initializable {
 		});
     }
 
+    private void goToAddedProfilePane(ActionEvent e) throws IOException {
+		System.out.println("Button was clicked!");
+		System.out.println(e.getEventType());
+		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/AddedProfilePane.fxml"));
+		Scene home_page_scene = new Scene(home_page_parent);
+		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		app_stage.hide(); // optional
+		app_stage.setScene(home_page_scene);
+		app_stage.show();
+	}
+    
 	private void goToChildrenPane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
