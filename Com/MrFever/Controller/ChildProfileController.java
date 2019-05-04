@@ -1,10 +1,11 @@
 package Com.MrFever.Controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 import Com.MrFever.Dao.ChildProfileDao;
 import Com.MrFever.Dao.TemperatureDao;
@@ -20,119 +21,118 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
-public class ChildProfileController implements  Initializable {
-	
+public class ChildProfileController implements Initializable {
+
 	ChildProfileDao chPDao = new ChildProfileDao();
 	TemperatureDao tDao = new TemperatureDao();
-	Temperature temp = new Temperature();
-	
+//	Temperature temp = new Temperature();
+
 	@FXML
-    private Tab childProfileTab;
+	private Tab childProfileTab;
 
-    @FXML
-    private ImageView girlOrBoy;
+	@FXML
+	private ImageView girlOrBoy;
 
-    @FXML
-    private TextField nameField;
+	@FXML
+	private TextField nameField;
 
-    @FXML
-    private TextField birthField;
+	@FXML
+	private TextField birthField;
 
-    @FXML
-    private Tab temperatureTab;
+	@FXML
+	private Tab temperatureTab;
 
-    @FXML
-    private TableView<Temperature> temperatureTable;
+	@FXML
+	private TableView<Temperature> temperatureTable;
 
-    @FXML
-    private TableColumn<Temperature, String> dateColumn;
+	@FXML
+	private TableColumn<Temperature, String> dateColumn;
 
-    @FXML
-    private TableColumn<Temperature, String> timeColumn;
+	@FXML
+	private TableColumn<Temperature, String> timeColumn;
 
-    @FXML
-    private TableColumn<Temperature, String> placeColumn;
+	@FXML
+	private TableColumn<Temperature, String> placeColumn;
 
-    @FXML
-    private TableColumn<Temperature, Double> levelColumn;
+	@FXML
+	private TableColumn<Temperature, Double> levelColumn;
 
-    @FXML
-    private Tab medicinesTab;
+	@FXML
+	private Tab medicinesTab;
 
-    @FXML
-    private TableView<?> medicineTable;
+	@FXML
+	private TableView<?> medicineTable;
 
-    @FXML
-    private TableColumn<?, ?> dateMcolumn;
+	@FXML
+	private TableColumn<?, ?> dateMcolumn;
 
-    @FXML
-    private TableColumn<?, ?> timeMcolumn;
+	@FXML
+	private TableColumn<?, ?> timeMcolumn;
 
-    @FXML
-    private TableColumn<?, ?> medicineColumn;
+	@FXML
+	private TableColumn<?, ?> medicineColumn;
 
-    @FXML
-    private TableColumn<?, ?> formColumn;
+	@FXML
+	private TableColumn<?, ?> formColumn;
 
-    @FXML
-    private TableColumn<?, ?> doseColumn;
+	@FXML
+	private TableColumn<?, ?> doseColumn;
 
-    @FXML
-    private Button addTemperatureButton;
+	@FXML
+	private Button addTemperatureButton;
 
-    @FXML
-    private Button addMedDoseButton;
-    
-    @FXML
-    private Button returnButton;
+	@FXML
+	private Button addMedDoseButton;
 
-    @Override
+	@FXML
+	private Button returnButton;
+
+	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	
-    	try {
+
+		try {
 			chPDao.viewChildDetails();
 		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-    	
-    	nameField.setText("Child's name: " + ChildProfileDao.name);
-    	birthField.setText("Child's date of birth: " + ChildProfileDao.dateOfBirth);
-    	String sexImage = ChildProfileDao.sex;
-    	
-    	ImageView girlOrBoy = new ImageView(getClass().getResource("../Resources/" + sexImage + ".png").toExternalForm());
-  
-    	/*
-    	try {
+
+		nameField.setText("Child's name: " + ChildProfileDao.name);
+		birthField.setText("Child's date of birth: " + ChildProfileDao.dateOfBirth);
+		String sexImage = ChildProfileDao.sex;
+
+		/*
+		 * FileInputStream input = null; try { input = new
+		 * FileInputStream("../Resources/" + sexImage + ".png"); } catch
+		 * (FileNotFoundException e1) { // TODO Auto-generated catch block
+		 * e1.printStackTrace(); } Image image = new Image(input); ImageView girlOrBoy =
+		 * new ImageView(image); //ImageView girlOrBoy = new
+		 * ImageView(getClass().getResource("../Resources/" + sexImage +
+		 * ".png").toExternalForm());
+		 */
+		// filling temperatureTable using selecting items from database
+		try {
 			tDao.viewTemperatures();
 		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-    	
-);
-    	
-    	
 
-    
-/*   	initTable();
-        
-        tableData.addAll(tDao.temperatureList.stream().map(this::convertTempToModel).collect(Collectors.toList()));
-    }
-    }
+		dateColumn.setCellValueFactory(new PropertyValueFactory("date"));
+		timeColumn.setCellValueFactory(new PropertyValueFactory("time"));
+		placeColumn.setCellValueFactory(new PropertyValueFactory("place"));
+		levelColumn.setCellValueFactory(new PropertyValueFactory("level"));
+		temperatureTable.setItems(null);
+		temperatureTable.setItems(tDao.temperatureList);
 
-   
-   */ 	
-    	
-    	
-    	addTemperatureButton.setOnAction(new EventHandler<ActionEvent>() {
+		addTemperatureButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
@@ -143,8 +143,8 @@ public class ChildProfileController implements  Initializable {
 				}
 			}
 		});
-    	
-    	addMedDoseButton.setOnAction(new EventHandler<ActionEvent>() {
+
+		addMedDoseButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
@@ -167,24 +167,8 @@ public class ChildProfileController implements  Initializable {
 				}
 			}
 		});
-		
+
 	}
-	
-//	 private void initTable() {
-	//        temperatureTable.setItems(tDao.temperatureList);
-
-	  //      dateColumn.setCellValueFactory(data -> data.getValue().dateProperty()); // here is where tha magic happens :)
-
-	    //    timeColumn.setCellValueFactory(data -> data.getValue().timeProperty()); // this sets the cells value from
-	                                                                                       // the model.
-	      //  levelColumn.setCellValueFactory(data -> data.getValue().levelProperty());
-	        
-	        //placeColumn.setCellValueFactory(data -> data.getValue().placeProperty());
-	   // }
-
-	    //private Temperature convertTempToModel(Temperature temp) {
-	     //   return new Temperature(temp.getLevelOfTemperature(), temp.getTimeOfMeasurement().toString(), temp.getPlaceOfMeasurement().toString(), temp.getDateOfMeasurement().toString());
-	   // }
 
 	private void goToAddTemperaturePane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
@@ -196,8 +180,8 @@ public class ChildProfileController implements  Initializable {
 		app_stage.setScene(home_page_scene);
 		app_stage.show();
 	}
-    
-    private void goToAddMedicineDosePane(ActionEvent e) throws IOException {
+
+	private void goToAddMedicineDosePane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
 		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/AddMedicineDosePane.fxml"));
@@ -207,7 +191,7 @@ public class ChildProfileController implements  Initializable {
 		app_stage.setScene(home_page_scene);
 		app_stage.show();
 	}
-    
+
 	private void goToChildrenPane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());

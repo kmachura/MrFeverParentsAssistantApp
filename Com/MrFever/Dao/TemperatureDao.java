@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 
 public class TemperatureDao<E> {
 
-/*	public ObservableList<Temperature> temperatureList = FXCollections.observableArrayList();
+	public ObservableList<Temperature> temperatureList = FXCollections.observableArrayList();
 	
 	public ObservableList<Temperature> viewTemperatures() throws ClassNotFoundException, SQLException, InterruptedException {
 		final Connection conn = DbConnectionManager.getConn();
@@ -21,12 +21,7 @@ public class TemperatureDao<E> {
 		ResultSet resultSet = statement.executeQuery(sqlQuery);
 
 		while (resultSet.next()) {
-			Temperature temp = new Temperature();
-			temp.setDateOfMeasurement(resultSet.getString("dateofmeasurement"));
-			temp.setTimeOfMeasurement(resultSet.getString("timeofmeasurement"));
-			temp.setPlaceOfMeasurement(resultSet.getString("placeofmeasurement"));
-			temp.setLevelOfTemperature(resultSet.getDouble("leveloftemperature"));
-			temperatureList.add(temp);
+			temperatureList.add(new Temperature(resultSet.getDouble("leveloftemperature"), resultSet.getString("placeofmeasurement"), resultSet.getString("dateofmeasurement"), resultSet.getString("timeofmeasurement")));
 
 		}
 
@@ -43,5 +38,5 @@ public class TemperatureDao<E> {
 		return temperatureList;
 
 	}
-*/
+
 }
