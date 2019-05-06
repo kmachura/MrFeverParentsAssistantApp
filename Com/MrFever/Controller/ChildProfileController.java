@@ -1,14 +1,14 @@
 package Com.MrFever.Controller;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Com.MrFever.Dao.ChildProfileDao;
+import Com.MrFever.Dao.MedicineDao;
 import Com.MrFever.Dao.TemperatureDao;
+import Com.MrFever.Model.Medicine;
 import Com.MrFever.Model.Temperature;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,7 +24,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -32,7 +31,7 @@ public class ChildProfileController implements Initializable {
 
 	ChildProfileDao chPDao = new ChildProfileDao();
 	TemperatureDao tDao = new TemperatureDao();
-//	Temperature temp = new Temperature();
+	MedicineDao mDao = new MedicineDao();
 
 	@FXML
 	private Tab childProfileTab;
@@ -68,22 +67,22 @@ public class ChildProfileController implements Initializable {
 	private Tab medicinesTab;
 
 	@FXML
-	private TableView<?> medicineTable;
+	private TableView<Medicine> medicineTable;
 
 	@FXML
-	private TableColumn<?, ?> dateMcolumn;
+	private TableColumn<Medicine, String> dateMColumn;
 
 	@FXML
-	private TableColumn<?, ?> timeMcolumn;
+	private TableColumn<Medicine, String> timeMColumn;
 
 	@FXML
-	private TableColumn<?, ?> medicineColumn;
+	private TableColumn<Medicine, String> medicineColumn;
 
 	@FXML
-	private TableColumn<?, ?> formColumn;
+	private TableColumn<Medicine, String> formColumn;
 
 	@FXML
-	private TableColumn<?, ?> doseColumn;
+	private TableColumn<Medicine, String> doseColumn;
 
 	@FXML
 	private Button addTemperatureButton;
@@ -121,7 +120,6 @@ public class ChildProfileController implements Initializable {
 		try {
 			tDao.viewTemperatures();
 		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -131,6 +129,21 @@ public class ChildProfileController implements Initializable {
 		levelColumn.setCellValueFactory(new PropertyValueFactory("level"));
 		temperatureTable.setItems(null);
 		temperatureTable.setItems(tDao.temperatureList);
+
+		// filling medicineTable using selecting items from database
+		try {
+			mDao.viewGivenMedicines();
+		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
+			e1.printStackTrace();
+		}
+
+		dateMColumn.setCellValueFactory(new PropertyValueFactory("dateM"));
+		timeMColumn.setCellValueFactory(new PropertyValueFactory("timeM"));
+		medicineColumn.setCellValueFactory(new PropertyValueFactory("type"));
+		formColumn.setCellValueFactory(new PropertyValueFactory("form"));
+		doseColumn.setCellValueFactory(new PropertyValueFactory("dose"));
+		medicineTable.setItems(null);
+		medicineTable.setItems(mDao.givenMedicinesList);
 
 		addTemperatureButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

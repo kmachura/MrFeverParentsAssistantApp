@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Com.MrFever.Dao.AddMedicineDoseDao;
-import Com.MrFever.Dao.MedicineDao;
+import Com.MrFever.Dao.MedicinesDetailDao;
+import Com.MrFever.Model.MedicinesDetail;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,12 +21,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class MedicineController implements Initializable {
 	
 	AddMedicineDoseDao aMDDao = new AddMedicineDoseDao();
-	MedicineDao mDao = new MedicineDao();
+	MedicinesDetailDao mDDao = new MedicinesDetailDao();
 	
 	public static String selectedMedicine = null;
 
@@ -36,13 +38,13 @@ public class MedicineController implements Initializable {
 	    private ChoiceBox<String> medChoiceBox;
 
 	    @FXML
-	    private TableView<?> medicineTab;
+	    private TableView<MedicinesDetail> medicineTab;
 
 	    @FXML
-	    private TableColumn<?, ?> formOfMedColumn;
+	    private TableColumn<MedicinesDetail, String> formOfMedColumn;
 
 	    @FXML
-	    private TableColumn<?, ?> medDescriptionColumn;
+	    private TableColumn<MedicinesDetail, String> medDescriptionColumn;
 
 
 	    @FXML
@@ -56,10 +58,10 @@ public class MedicineController implements Initializable {
     	
     	// selecting givenTypeOfMedicine value in dedicated Choice Box
     	try {
-
-			getMedChoiceBox().getItems().add(0, "Choose medicine");
-			getMedChoiceBox().getSelectionModel().select(0);
-			getMedChoiceBox().getItems().addAll(aMDDao.selectMedicines());
+    		
+    		medChoiceBox.getItems().add(0, "Choose medicine");
+			medChoiceBox.getSelectionModel().select(0);
+			medChoiceBox.getItems().addAll(aMDDao.selectMedicines());
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -75,20 +77,28 @@ public class MedicineController implements Initializable {
 			selectedMedicine = newValue;
 		});
 		
+		
+		//viewing details about chosen medicine after selecting option in choiceBox
 		getMedChoiceBox().setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-
+				// filling medicineTab using selecting items from database
+				medicineTab.getItems().clear();
 				try {
-					mDao.viewMedicineDescription();
+					mDDao.viewMedicineDescription();
 				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//fill the tableView
+				
+				formOfMedColumn.setCellValueFactory(new PropertyValueFactory("form"));
+				medDescriptionColumn.setCellValueFactory(new PropertyValueFactory("description"));
+				medicineTab.setItems(null);
+				medicineTab.setItems(mDDao.medicinesDetailList);
 			}
 		});
        	
+		//action for addMedDoseButton to send you to AddMedicineDose Pane
     	addMedDoseButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -101,6 +111,7 @@ public class MedicineController implements Initializable {
 			}
 		});
  
+    	//action for returnButton to send you back to Main Pane
    		returnButton.setOnAction(new EventHandler<ActionEvent>() {
    			@Override
    			public void handle(ActionEvent event) {
@@ -123,6 +134,7 @@ public class MedicineController implements Initializable {
 		this.medChoiceBox = medChoiceBox;
 	}
 
+	//method to change loaded pane to AddMedicineDose Pane
 	private void goToAddMedicineDosePane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
@@ -133,7 +145,8 @@ public class MedicineController implements Initializable {
 		app_stage.setScene(home_page_scene);
 		app_stage.show();
 	}
-       
+    
+	//method to change loaded Pane to Main Pane
    	private void goToMainPane(ActionEvent e) throws IOException {
    		System.out.println("Button was clicked!");
    		System.out.println(e.getEventType());
