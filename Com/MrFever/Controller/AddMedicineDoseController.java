@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Com.MrFever.Dao.AddMedicineDoseDao;
+import Com.MrFever.Dao.ChildrenDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,6 +34,10 @@ public class AddMedicineDoseController implements  Initializable {
 	public static String givenFormOfMedicine = null;
 	
 	public static String givenDoseOfMedicine = null;
+	
+	public static String selectedChild = null;
+	
+	ChildrenDao chDao = new ChildrenDao();
 	
 	@FXML
     private TextField titleField;
@@ -69,6 +74,12 @@ public class AddMedicineDoseController implements  Initializable {
 
     @FXML
     private Button addMedicineButton;
+    
+    @FXML
+    private TextField childField;
+
+    @FXML
+    private ChoiceBox<String> selectChildChoiceBox;
 
     @FXML
     private Button cleanButton;
@@ -144,6 +155,30 @@ public class AddMedicineDoseController implements  Initializable {
     		}
     	});
     	
+    	try {
+
+			selectChildChoiceBox.getItems().addAll(chDao.selectChildrenName());
+			selectChildChoiceBox.getItems().add(0, "Choose child");
+			if(!(ChildrenController.chosenChild == null)) {
+			selectChildChoiceBox.getSelectionModel().select(ChildrenController.chosenChild);
+			} else {
+			selectChildChoiceBox.getSelectionModel().select(0);	
+			}
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		selectChildChoiceBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+			selectedChild = newValue;
+		});
+    	
     	//action for addTempButton to go to AddedTemperaturePane
     	addMedicineButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -167,6 +202,7 @@ public class AddMedicineDoseController implements  Initializable {
     			givenDoseField.clear();
     			givenDateField.clear();
     			givenTimeField.clear();
+    			getSelectChildChoiceBox().getSelectionModel().selectFirst();
     		}
     	});
 
@@ -185,6 +221,14 @@ public class AddMedicineDoseController implements  Initializable {
 		
 	}
 
+	public ChoiceBox<String> getSelectChildChoiceBox() {
+		return selectChildChoiceBox;
+	}
+
+	public void setSelectChildChoiceBox(ChoiceBox<String> selectChildChoiceBox) {
+		this.selectChildChoiceBox = selectChildChoiceBox;
+	}
+
 	public ChoiceBox<String> getTypeMedChoiceBox() {
 		return typeMedChoiceBox;
 	}
@@ -201,11 +245,11 @@ public class AddMedicineDoseController implements  Initializable {
 		this.formMedChoiceBox = formMedChoiceBox;
 	}
 
-	// method to change loaded Pane to ChildProfile Pane
+	// method to change loaded Pane to Children Pane
 	private void goToChildProfilePane(ActionEvent e) throws IOException {
 		System.out.println("Button was clicked!");
 		System.out.println(e.getEventType());
-		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/ChildProfilePane.fxml"));
+		Parent home_page_parent = FXMLLoader.load(getClass().getResource("../View/ChildrenPane.fxml"));
 		Scene home_page_scene = new Scene(home_page_parent);
 		Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 		app_stage.hide(); // optional
