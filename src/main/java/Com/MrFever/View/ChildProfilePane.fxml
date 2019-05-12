@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.ChildProfileController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="400.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/MrFeverMini.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox prefHeight="400.0" prefWidth="490.0">
+         <children>
+            <TabPane prefHeight="356.0" prefWidth="488.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab id="child-profile-tab" fx:id="childProfileTab" text="Child Profile">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="306.0" prefWidth="488.0">
+                           <children>
+                              <VBox prefHeight="319.0" prefWidth="471.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="350.0" />
+                                          <ImageView id="girl-or-boy" fx:id="girlOrBoy" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </HBox>
+                                    <Separator prefHeight="25.0" prefWidth="200.0" />
+                                    <TextField id="name-field" fx:id="nameField" promptText="Name of the child" />
+                                    <Separator prefHeight="25.0" prefWidth="200.0" />
+                                    <TextField id="birth-field" fx:id="birthField" editable="false" prefHeight="29.0" prefWidth="471.0" promptText="Date of birth" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab id="temperature-tab" fx:id="temperatureTab" text="Temperature Levels">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="150.0">
+                           <children>
+                              <TableView id="temperature-table" fx:id="temperatureTable" layoutY="28.0" prefHeight="334.0" prefWidth="470.0">
+                                <columns>
+                                  <TableColumn id="date-column" fx:id="dateColumn" prefWidth="75.0" text="Date" />
+                                  <TableColumn id="time-column" fx:id="timeColumn" prefWidth="75.0" text="Time" />
+                                    <TableColumn id="place-column" fx:id="placeColumn" prefWidth="148.00001525878906" text="Place of measurement" />
+                                    <TableColumn id="level-column" fx:id="levelColumn" prefWidth="171.199951171875" text="Temperature level" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                 <Tab id="medicines-tab" fx:id="medicinesTab" text="Given Medicines">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="150.0">
+                           <children>
+                              <TableView id="medicine-table" fx:id="medicineTable" layoutX="10.0" layoutY="25.0" prefHeight="333.0" prefWidth="458.0">
+                                <columns>
+                                  <TableColumn id="date-m-column" fx:id="dateMColumn" prefWidth="75.0" text="Date" />
+                                  <TableColumn id="time-m-column" fx:id="timeMColumn" prefWidth="75.0" text="Time" />
+                                    <TableColumn id="medicine-column" fx:id="medicineColumn" prefWidth="106.40003967285156" text="Medicine" />
+                                    <TableColumn id="form-column" fx:id="formColumn" prefWidth="103.20001220703125" text="Form" />
+                                    <TableColumn id="dose-column" fx:id="doseColumn" prefWidth="98.4000244140625" text="Dose" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <HBox prefHeight="27.0" prefWidth="488.0">
+               <children>
+                  <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="325.0" />
+                  <Button id="add-temperature-button" fx:id="addTemperatureButton" mnemonicParsing="false" prefHeight="50.0" />
+                  <Separator maxWidth="200.0" orientation="VERTICAL" prefHeight="200.0" />
+                  <Button id="add-med-dose-button" fx:id="addMedDoseButton" mnemonicParsing="false" prefWidth="65.0" />
+                  <Separator orientation="VERTICAL" prefHeight="50.0" />
+                  <Button id="return-button" fx:id="returnButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

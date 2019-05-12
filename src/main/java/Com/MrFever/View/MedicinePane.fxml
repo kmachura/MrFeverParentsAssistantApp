@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.MedicineController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="400.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/MrFeverMini.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="540.0">
+         <children>
+           <Pane prefHeight="421.0" prefWidth="488.0">
+               <children>
+                  <TextField id="title-med-field" fx:id="titleMedField" editable="false" layoutX="20.0" layoutY="14.0" text="Available medicines:">
+                     <font>
+                        <Font name="Georgia" size="20.0" />
+                     </font>
+                  </TextField>
+                  <ChoiceBox id="med-choice-box" fx:id="medChoiceBox" layoutX="20.0" layoutY="74.0" prefHeight="25.0" prefWidth="423.0" />
+                  <TableView id="medicine-tab" fx:id="medicineTab" layoutX="20.0" layoutY="113.0" prefHeight="233.0" prefWidth="423.0">
+                    <columns>
+                      <TableColumn id="form-of-med-column" fx:id="formOfMedColumn" prefWidth="130.39994430541992" text="C1" />
+                      <TableColumn id="med-description-column" fx:id="medDescriptionColumn" minWidth="0.0" prefWidth="292.0000762939453" text="C2" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Separator orientation="VERTICAL" prefHeight="40.0" prefWidth="355.0" />
+                  <Button id="add-med-dose-button" fx:id="addMedDoseButton" mnemonicParsing="false" prefWidth="65.0" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="10.0" />
+                  <Button id="return-button" fx:id="returnButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="45.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>
