@@ -2,6 +2,7 @@ package Com.MrFever.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Com.MrFever.Dao.AddTemperatureDao;
@@ -15,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -23,7 +25,7 @@ public class AddTemperatureController implements  Initializable {
 	
 	AddTemperatureDao aTDao = new AddTemperatureDao();
 	
-	public static String givenDateOfMeasurement = null;
+	public static LocalDate givenDateOfMeasurement = null;
 	
 	public static String givenTimeOfMeasurement = null;
 	
@@ -50,7 +52,7 @@ public class AddTemperatureController implements  Initializable {
     private TextField dateField;
 
     @FXML
-    private TextField givenDateField;
+    private DatePicker givenDatePicker;
 
     @FXML
     private TextField timeField;
@@ -91,16 +93,19 @@ public class AddTemperatureController implements  Initializable {
 			givenPlaceOfMeasurement = newValue;
 		});
     	
-    	// input for givenDateField, getting givenDateOfMeasurement value for further use
-    	givenDateField.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-    		@Override
-    		public void handle(KeyEvent event) {
-    			System.out.println("Wygenerowano zdarzenie " + event.getEventType());	
-    			givenDateField.textProperty().addListener((observable, oldValue, newValue) -> {
-    			    givenDateOfMeasurement = newValue;
-    			});
-    		}
-    	});
+    	// input for givenDateField, getting givenDateOfMeasurement value for further use	
+    	givenDatePicker.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("Wygenerowano zdarzenie " + event.getEventType());
+				// get the birthday date picker value
+				LocalDate givenDateOfMeasure = givenDatePicker.getValue();
+
+				givenDateOfMeasurement = givenDateOfMeasure;
+
+			}
+
+		});
     	
     	// input for givenTimeField, getting givenTimeOfMeasurement value for further use
     	givenTimeField.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
@@ -132,7 +137,7 @@ public class AddTemperatureController implements  Initializable {
     		public void handle(ActionEvent event) {
     			System.out.println("Wygenerowano zdarzenie" + event.getEventType());
     			givenTemperatureLevelField.clear();
-    			givenDateField.clear();
+    			givenDatePicker.setValue(null);
     			givenTimeField.clear();
     			getPlaceOfMeasurementChoiceBox().getSelectionModel().selectFirst();
     		}

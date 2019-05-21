@@ -3,6 +3,7 @@ package Com.MrFever.Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Com.MrFever.Dao.AddMedicineDoseDao;
@@ -17,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -25,7 +27,7 @@ public class AddMedicineDoseController implements  Initializable {
 
 	AddMedicineDoseDao aMDDao = new AddMedicineDoseDao();
 	
-	public static String givenDateOfGiving = null;
+	public static LocalDate givenDateOfGiving = null;
 	
 	public static String givenTimeOfGiving = null;
 	
@@ -64,7 +66,7 @@ public class AddMedicineDoseController implements  Initializable {
     private TextField dateField;
 
     @FXML
-    private TextField givenDateField;
+    private DatePicker givenDatePicker;
 
     @FXML
     private TextField timeField;
@@ -133,16 +135,19 @@ public class AddMedicineDoseController implements  Initializable {
     		}
     	});
     	
-    	// input for givenDateField, getting givenDateOfGiving value for further use
-    	givenDateField.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-    		@Override
-    		public void handle(KeyEvent event) {
-    			System.out.println("Wygenerowano zdarzenie " + event.getEventType());	
-    			givenDateField.textProperty().addListener((observable, oldValue, newValue) -> {
-    			    givenDateOfGiving = newValue;
-    			});
-    		}
-    	});
+    	// input for givenDateField, getting givenDateOfGiving value for further use    	
+    	givenDatePicker.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("Wygenerowano zdarzenie " + event.getEventType());
+				// get the birthday date picker value
+				LocalDate givenDate = givenDatePicker.getValue();
+
+				givenDateOfGiving = givenDate;
+
+			}
+
+		});
     	
     	// input for givenTimeField, getting givenTimeOfMeasurement value for further use
     	givenTimeField.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
@@ -200,7 +205,7 @@ public class AddMedicineDoseController implements  Initializable {
     			getTypeMedChoiceBox().getSelectionModel().selectFirst();
     			getFormMedChoiceBox().getSelectionModel().selectFirst();
     			givenDoseField.clear();
-    			givenDateField.clear();
+    			givenDatePicker.setValue(null);
     			givenTimeField.clear();
     			getSelectChildChoiceBox().getSelectionModel().selectFirst();
     		}
