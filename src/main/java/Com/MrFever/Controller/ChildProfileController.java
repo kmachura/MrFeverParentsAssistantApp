@@ -19,11 +19,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -39,11 +40,11 @@ public class ChildProfileController implements Initializable {
 	@FXML
 	private ImageView girlOrBoy;
 
-	@FXML
-	private TextField nameField;
+    @FXML
+    private Label nameLabel;
 
-	@FXML
-	private TextField birthField;
+    @FXML
+    private Label birthLabel;
 
 	@FXML
 	private Tab temperatureTab;
@@ -103,19 +104,17 @@ public class ChildProfileController implements Initializable {
 			e1.printStackTrace();
 		}
 
-		nameField.setText("Child's name: " + ChildProfileDao.name);
-		birthField.setText("Child's date of birth: " + ChildProfileDao.dateOfBirth);
+		nameLabel.setText("Child's name: " + ChildProfileDao.name);
+		birthLabel.setText("Child's date of birth: " + ChildProfileDao.dateOfBirth);
+	
 		String sexImage = ChildProfileDao.sex;
-
 		/*
-		 * FileInputStream input = null; try { input = new
-		 * FileInputStream("../Resources/" + sexImage + ".png"); } catch
-		 * (FileNotFoundException e1) { // TODO Auto-generated catch block
-		 * e1.printStackTrace(); } Image image = new Image(input); ImageView girlOrBoy =
-		 * new ImageView(image); //ImageView girlOrBoy = new
-		 * ImageView(getClass().getResource("../Resources/" + sexImage +
-		 * ".png").toExternalForm());
-		 */
+
+		if (sexImage.equals("boy")) {
+			girlOrBoy.setImage(new Image(FXMLLoader.class.getResourceAsStream("../Resources/boy.png")));
+		}
+		*/
+		
 		// filling temperatureTable using selecting items from database
 		try {
 			tDao.viewTemperatures();

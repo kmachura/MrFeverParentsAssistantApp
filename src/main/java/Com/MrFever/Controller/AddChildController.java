@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -29,7 +32,7 @@ public class AddChildController implements Initializable {
 	public static String selectedSex = null;
 
 	@FXML
-	private TextField titleField;
+	private Label titleLabel;
 
 	@FXML
 	private TextField giveNameField;
@@ -54,6 +57,9 @@ public class AddChildController implements Initializable {
 
 	@FXML
 	private DatePicker birthdayDatePicker;
+
+	@FXML
+	private Label warningLabel;
 
 	@FXML
 	private Button cleanButton;
@@ -100,7 +106,17 @@ public class AddChildController implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
-					goToAddedProfilePane(event);
+					Pattern pattern = Pattern.compile("[A-Z][a-z]+");
+					Matcher matcher = pattern.matcher(givenNameOfChild);
+					matcher.matches();
+					if (matcher.matches() == false) {
+						warningLabel.setText(
+								"Name should consist only from letters \n and should begin with capital letter!");
+						nameField.clear();
+						matcher = null;
+					} else {
+						goToAddedProfilePane(event);
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -13,6 +13,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -30,6 +32,15 @@ public class MainController implements Initializable {
 	@FXML
 	private Button exitButton;
 
+	@FXML
+	private Label childLabel;
+
+	@FXML
+	private Label medLabel;
+
+	@FXML
+	private Label exitLabel;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -45,6 +56,14 @@ public class MainController implements Initializable {
 			}
 		});
 
+		childButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+				childLabel.setText("Children");
+			}
+		});
+		childButton.setOnMouseExited(mouseEvent -> childLabel.setText(""));
+
 		medButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -57,6 +76,14 @@ public class MainController implements Initializable {
 			}
 		});
 
+		medButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+				medLabel.setText("Medicines");
+			}
+		});
+		medButton.setOnMouseExited(mouseEvent -> medLabel.setText(""));
+
 		exitButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -68,6 +95,14 @@ public class MainController implements Initializable {
 				}
 			}
 		});
+
+		exitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+				exitLabel.setText("EXIT");
+			}
+		});
+		exitButton.setOnMouseExited(mouseEvent -> exitLabel.setText(""));
 	}
 
 	private void goToChildrenPane(ActionEvent e) throws IOException {

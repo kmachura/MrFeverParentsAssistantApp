@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -28,44 +29,45 @@
          <children>
            <Pane prefHeight="382.0" prefWidth="488.0">
                <children>
-                  <TextField id="title-field" fx:id="titleField" editable="false" layoutX="81.0" layoutY="44.0" prefHeight="38.0" prefWidth="347.0" text="Add body temperature level:">
+                  <TextField id="title-field" fx:id="titleField" editable="false" layoutX="70.0" layoutY="22.0" prefHeight="38.0" prefWidth="347.0" text="Add body temperature level:">
                      <font>
                         <Font name="Georgia" size="20.0" />
                      </font>
                   </TextField>
-                  <TextField id="temperature-level-field" fx:id="temperatureLevelField" editable="false" layoutX="31.0" layoutY="125.0" prefHeight="25.0" prefWidth="150.0" text="Temperature level:">
+                  <TextField id="temperature-level-field" fx:id="temperatureLevelField" editable="false" layoutX="31.0" layoutY="138.0" prefHeight="25.0" prefWidth="150.0" text="Temperature level:">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="given-temperature-level-field" fx:id="givenTemperatureLevelField" layoutX="204.0" layoutY="125.0" prefHeight="23.0" prefWidth="234.0" promptText="Temperature level">
+                  <TextField id="given-temperature-level-field" fx:id="givenTemperatureLevelField" layoutX="203.0" layoutY="139.0" prefHeight="23.0" prefWidth="234.0" promptText="Temperature level">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="place-of-measurement-field" fx:id="placeOfMeasurementField" editable="false" layoutX="31.0" layoutY="168.0" prefHeight="25.0" prefWidth="150.0" text="Place of measurement:">
+                  <TextField id="place-of-measurement-field" fx:id="placeOfMeasurementField" editable="false" layoutX="31.0" layoutY="181.0" prefHeight="25.0" prefWidth="150.0" text="Place of measurement:">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <ChoiceBox id="place-of-measurement-choice-box" fx:id="placeOfMeasurementChoiceBox" layoutX="203.0" layoutY="168.0" prefHeight="25.0" prefWidth="234.0" />
-                  <TextField id="date-field" fx:id="dateField" editable="false" layoutX="31.0" layoutY="216.0" prefHeight="25.0" prefWidth="150.0" text="Date (DD.MM.YYYY):">
+                  <ChoiceBox id="place-of-measurement-choice-box" fx:id="placeOfMeasurementChoiceBox" layoutX="203.0" layoutY="181.0" prefHeight="25.0" prefWidth="234.0" />
+                  <TextField id="date-field" fx:id="dateField" editable="false" layoutX="31.0" layoutY="229.0" prefHeight="25.0" prefWidth="150.0" text="Date (DD.MM.YYYY):">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="time-field" fx:id="timeField" editable="false" layoutX="31.0" layoutY="259.0" prefHeight="25.0" prefWidth="150.0" text="Time (HH:MM):">
+                  <TextField id="time-field" fx:id="timeField" editable="false" layoutX="31.0" layoutY="272.0" prefHeight="25.0" prefWidth="150.0" text="Time (HH:MM):">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="given-time-field" fx:id="givenTimeField" layoutX="204.0" layoutY="260.0" prefHeight="23.0" prefWidth="234.0" promptText="HH:MM">
+                  <TextField id="given-time-field" fx:id="givenTimeField" layoutX="204.0" layoutY="273.0" prefHeight="23.0" prefWidth="234.0" promptText="HH:MM">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <Button id="add-temp-button" fx:id="addTempButton" layoutX="155.0" layoutY="298.0" mnemonicParsing="false" text="Add temperature" />
-                  <DatePicker id="given-date-picker" fx:id="givenDatePicker" layoutX="204.0" layoutY="216.0" prefHeight="25.0" prefWidth="234.0" />
+                  <Button id="add-temp-button" fx:id="addTempButton" layoutX="155.0" layoutY="309.0" mnemonicParsing="false" text="Add temperature" />
+                  <DatePicker id="given-date-picker" fx:id="givenDatePicker" layoutX="203.0" layoutY="229.0" prefHeight="25.0" prefWidth="234.0" />
+                  <Label id="warning-label" fx:id="warningLabel" layoutX="29.0" layoutY="67.0" prefHeight="64.0" prefWidth="407.0" />
                </children>
             </Pane>
             <HBox prefHeight="63.0" prefWidth="488.0">

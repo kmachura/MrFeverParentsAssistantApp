@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -27,13 +27,13 @@
          <children>
            <Pane prefHeight="422.0" prefWidth="488.0">
                <children>
-                  <TextField id="title-field" fx:id="titleField" editable="false" layoutX="83.0" layoutY="55.0" prefHeight="38.0" prefWidth="347.0" text="Choose child profile to be deleted:">
+                  <Label id="title-label" fx:id="titleLabel" layoutX="75.0" layoutY="51.0" prefHeight="28.0" prefWidth="362.0" text="Choose child profile to be deleted">
                      <font>
-                        <Font name="Georgia" size="20.0" />
+                        <Font name="Serif Bold" size="24.0" />
                      </font>
-                  </TextField>
+                  </Label>
                   <ChoiceBox id="profile-choice-box" fx:id="profileChoiceBox" accessibleText="Choose child" layoutX="145.0" layoutY="141.0" prefHeight="25.0" prefWidth="224.0" />
-                  <TextField id="confirmation-field" fx:id="confirmationField" editable="false" layoutX="87.0" layoutY="191.0" prefHeight="25.0" prefWidth="339.0" />
+                  <Label id="confirmation-label" fx:id="confirmationLabel" layoutX="88.0" layoutY="190.0" prefHeight="37.0" prefWidth="340.0" />
                   <Button id="delete-button" fx:id="deleteButton" layoutX="185.0" layoutY="245.0" mnemonicParsing="false" text="Delete profile" />
                </children>
             </Pane>

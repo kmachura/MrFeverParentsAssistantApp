@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.stage.Stage;
@@ -28,7 +29,7 @@ public class ChildrenController implements Initializable {
 	public static String chosenChild;
 
 	@FXML
-	private TextField titleChildrenField;
+	private Label titleChildrenLabel;
 
 	@FXML
 	private Accordion childrenOptions;

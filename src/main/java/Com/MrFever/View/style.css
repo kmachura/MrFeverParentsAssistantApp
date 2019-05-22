@@ -17,7 +17,23 @@
     -fx-control-inner-background: #FFFFFF;
     -fx-faint-focus-color: #FFFFFF;
     }
+    
+#welcome-label {
+	 -fx-font: 18px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+	 }
 
+#child-label, #med-label, #exit-label {
+	 -fx-font: 14px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+	 }
+	 
 .separator:horizontal .line {
 	-fx-border-color: #FFFFFF;
 	-fx-text-box-border: #FFFFFF;
@@ -98,4 +114,19 @@
 
 #add-temperature-button:hover, #add-temperature-button:selected {
 	-fx-background-color: #FFFFFF;
+}
+
+#warning-label {
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+}
+
+#confirmation-label, #name-label, #birth-label {
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #000000;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
 }

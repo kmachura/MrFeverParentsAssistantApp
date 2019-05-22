@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Com.MrFever.Model.Main;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,7 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -23,14 +22,16 @@ public class StartController implements Initializable {
 	@FXML
 	private ImageView mrFeverImage;
 
-	@FXML
-	private TextArea welcomeTextArea;
+    @FXML
+    private Label welcomeLabel;
 
 	@FXML
 	private Button startButton;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		welcomeLabel.setText("Welcome! \n I am Mr Fever.\n Welcome to my app. \nI will show you around.");
 
 		startButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

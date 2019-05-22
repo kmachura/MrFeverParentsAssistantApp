@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -26,13 +27,13 @@ public class DeleteChildController implements Initializable {
 	ChildrenDao chDao = new ChildrenDao();
 
 	@FXML
-	private TextField titleField;
+    private Label titleLabel;
 
 	@FXML
 	private ChoiceBox<String> profileChoiceBox;
 
-	@FXML
-	private TextField confirmationField;
+    @FXML
+    private Label confirmationLabel;
 
 	@FXML
 	private Button deleteButton;
@@ -64,7 +65,7 @@ public class DeleteChildController implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 
-				confirmationField.setText("Are you sure to delete " + getProfileChoiceBox().getValue() + "'s profile?");
+				confirmationLabel.setText("Are you sure to delete " + getProfileChoiceBox().getValue() + "'s profile?");
 
 			}
 		});
