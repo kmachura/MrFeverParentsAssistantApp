@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.StartController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.StartController">
    <center>
       <HBox maxHeight="400.0" maxWidth="500.0" prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView id="mrFeverImg" fx:id="mrFeverImage" fitHeight="620.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="mrFeverImg" fx:id="mrFeverImage" fitHeight="297.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Resources/mrFever.png" />
                </image>
             </ImageView>
             <VBox>
                <children>
-                  <Label id="welcome-label" fx:id="welcomeLabel" prefHeight="158.0" prefWidth="190.0" />
+                  <Label id="welcome-label" fx:id="welcomeLabel" prefHeight="158.0" prefWidth="210.0" />
                   <Separator prefHeight="40.0" prefWidth="200.0" />
                   <Button id="startAppButton" fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Enter">
                      <VBox.margin>
@@ -33,7 +33,7 @@
       </HBox>
    </center>
    <right>
-      <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" visible="false" BorderPane.alignment="CENTER" />
+      <Separator orientation="VERTICAL" prefHeight="300.0" prefWidth="74.0" visible="false" BorderPane.alignment="CENTER" />
    </right>
    <top>
       <Separator prefHeight="100.0" prefWidth="200.0" visible="false" BorderPane.alignment="CENTER" />

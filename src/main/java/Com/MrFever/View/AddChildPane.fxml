@@ -34,10 +34,22 @@
                         <Font name="Serif Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField id="give-name-field" fx:id="giveNameField" editable="false" layoutX="31.0" layoutY="155.0" prefHeight="25.0" prefWidth="201.0" text="Child's name:" />
+                  <Label id="given-name-label" fx:id="givenNameLabel" layoutX="31.0" layoutY="149.0" prefHeight="37.0" prefWidth="201.0" text="Child's name:">
+                     <font>
+                        <Font name="Serif Regular" size="14.0" />
+                     </font>
+                  </Label>
                   <TextField id="name-field" fx:id="nameField" layoutX="281.0" layoutY="155.0" promptText="Name" />
-                  <TextField id="give-birthday-field" fx:id="giveBirthdayField" editable="false" layoutX="31.0" layoutY="200.0" prefHeight="25.0" prefWidth="201.0" text="Child's date of birth: (DD.MM.YYYY)" />
-                  <TextField id="give-sex-field" fx:id="giveSexField" editable="false" layoutX="31.0" layoutY="243.0" prefHeight="25.0" prefWidth="201.0" text="Child's sex:" />
+                  <Label id="given-birthday-label" fx:id="givenBirthdayLabel" layoutX="31.0" layoutY="203.0" text="Child's date of birth: (DD.MM.YYYY)">
+                     <font>
+                        <Font name="Serif Regular" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label id="given-sex-label" fx:id="givenSexLabel" layoutX="31.0" layoutY="248.0" text="Child's sex:">
+                     <font>
+                        <Font name="Serif Regular" size="14.0" />
+                     </font>
+                  </Label>
                   <ChoiceBox id="sex-choice-box" fx:id="sexChoiceBox" layoutX="281.0" layoutY="243.0" prefWidth="150.0" />
                   <Button id="add-profile-button" fx:id="addProfileButton" layoutX="168.0" layoutY="291.0" mnemonicParsing="false" text="Add Profile" />
                   <DatePicker id="birthday-date-picker" fx:id="birthdayDatePicker" layoutX="282.0" layoutY="200.0" />

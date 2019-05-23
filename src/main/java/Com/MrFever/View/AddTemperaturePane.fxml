@@ -29,37 +29,37 @@
          <children>
            <Pane prefHeight="382.0" prefWidth="488.0">
                <children>
-                  <TextField id="title-field" fx:id="titleField" editable="false" layoutX="70.0" layoutY="22.0" prefHeight="38.0" prefWidth="347.0" text="Add body temperature level:">
+                  <Label id="title-label" fx:id="titleLabel" layoutX="88.0" layoutY="30.0" text="Add body temperature level">
                      <font>
-                        <Font name="Georgia" size="20.0" />
+                        <Font name="Serif Bold" size="24.0" />
                      </font>
-                  </TextField>
-                  <TextField id="temperature-level-field" fx:id="temperatureLevelField" editable="false" layoutX="31.0" layoutY="138.0" prefHeight="25.0" prefWidth="150.0" text="Temperature level:">
+                  </Label>
+                  <Label id="temperature-level-label" fx:id="temperatureLevelLabel" layoutX="35.0" layoutY="142.0" text="Temperature level:">
                      <font>
-                        <Font name="Georgia" size="12.0" />
+                        <Font name="Serif Regular" size="14.0" />
                      </font>
-                  </TextField>
+                  </Label>
                   <TextField id="given-temperature-level-field" fx:id="givenTemperatureLevelField" layoutX="203.0" layoutY="139.0" prefHeight="23.0" prefWidth="234.0" promptText="Temperature level">
                      <font>
                         <Font name="Georgia" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField id="place-of-measurement-field" fx:id="placeOfMeasurementField" editable="false" layoutX="31.0" layoutY="181.0" prefHeight="25.0" prefWidth="150.0" text="Place of measurement:">
+                  <Label id="place-of-measurement-label" fx:id="placeOfMeasurementLabel" layoutX="35.0" layoutY="186.0" text="Place of measurement:">
                      <font>
-                        <Font name="Georgia" size="12.0" />
+                        <Font name="Serif Regular" size="14.0" />
                      </font>
-                  </TextField>
+                  </Label>
                   <ChoiceBox id="place-of-measurement-choice-box" fx:id="placeOfMeasurementChoiceBox" layoutX="203.0" layoutY="181.0" prefHeight="25.0" prefWidth="234.0" />
-                  <TextField id="date-field" fx:id="dateField" editable="false" layoutX="31.0" layoutY="229.0" prefHeight="25.0" prefWidth="150.0" text="Date (DD.MM.YYYY):">
+                  <Label id="date-label" fx:id="dateLabel" layoutX="35.0" layoutY="234.0" text="Date:">
                      <font>
-                        <Font name="Georgia" size="12.0" />
+                        <Font name="Serif Regular" size="14.0" />
                      </font>
-                  </TextField>
-                  <TextField id="time-field" fx:id="timeField" editable="false" layoutX="31.0" layoutY="272.0" prefHeight="25.0" prefWidth="150.0" text="Time (HH:MM):">
+                  </Label>
+                  <Label id="time-label" fx:id="timeLabel" layoutX="29.0" layoutY="276.0" text="Time (HH:MM):">
                      <font>
-                        <Font name="Georgia" size="12.0" />
+                        <Font name="Serif Regular" size="14.0" />
                      </font>
-                  </TextField>
+                  </Label>
                   <TextField id="given-time-field" fx:id="givenTimeField" layoutX="204.0" layoutY="273.0" prefHeight="23.0" prefWidth="234.0" promptText="HH:MM">
                      <font>
                         <Font name="Georgia" size="12.0" />

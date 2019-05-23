@@ -2,10 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -29,11 +29,11 @@
          <children>
            <Pane prefHeight="421.0" prefWidth="488.0">
                <children>
-                  <TextField id="title-med-field" fx:id="titleMedField" editable="false" layoutX="20.0" layoutY="14.0" text="Available medicines:">
+                  <Label id="title-med-label" fx:id="titleMedLabel" layoutX="60.0" layoutY="25.0" text="Available medicines">
                      <font>
-                        <Font name="Georgia" size="20.0" />
+                        <Font name="Serif Bold" size="24.0" />
                      </font>
-                  </TextField>
+                  </Label>
                   <ChoiceBox id="med-choice-box" fx:id="medChoiceBox" layoutX="20.0" layoutY="74.0" prefHeight="25.0" prefWidth="423.0" />
                   <TableView id="medicine-tab" fx:id="medicineTab" layoutX="20.0" layoutY="113.0" prefHeight="233.0" prefWidth="423.0">
                     <columns>

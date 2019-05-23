@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Com.MrFever.Dao.AddTemperatureDao;
 import javafx.event.ActionEvent;
@@ -35,28 +37,28 @@ public class AddTemperatureController implements Initializable {
 	public static Double givenLevelOfTemperature = 0.0;
 
 	@FXML
-	private TextField titleField;
+	private Label titleLabel;
 
 	@FXML
-	private TextField temperatureLevelField;
+	private Label temperatureLevelLabel;
 
 	@FXML
 	private TextField givenTemperatureLevelField;
 
 	@FXML
-	private TextField placeOfMeasurementField;
+	private Label placeOfMeasurementLabel;
 
 	@FXML
 	private ChoiceBox<String> placeOfMeasurementChoiceBox;
 
 	@FXML
-	private TextField dateField;
+	private Label dateLabel;
 
 	@FXML
 	private DatePicker givenDatePicker;
 
 	@FXML
-	private TextField timeField;
+	private Label timeLabel;
 
 	@FXML
 	private TextField givenTimeField;
@@ -64,8 +66,8 @@ public class AddTemperatureController implements Initializable {
 	@FXML
 	private Button addTempButton;
 
-    @FXML
-    private Label warningLabel;
+	@FXML
+	private Label warningLabel;
 
 	@FXML
 	private Button cleanButton;
@@ -78,19 +80,21 @@ public class AddTemperatureController implements Initializable {
 
 		// input for givenTemperatureLevelField, getting givenLevelOfTemperature value
 		// for further use
+		givenTemperatureLevelField.setOnMouseEntered(mouseEvent -> warningLabel.setText(""));
 		givenTemperatureLevelField.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
 			@Override
-			public void handle(KeyEvent event){
-				
-					System.out.println("Wygenerowano zdarzenie " + event.getEventType());
-					givenTemperatureLevelField.textProperty().addListener((observable, oldValue, newValue) -> {
-						try {
+			public void handle(KeyEvent event) {
+
+				System.out.println("Wygenerowano zdarzenie " + event.getEventType());
+				givenTemperatureLevelField.textProperty().addListener((observable, oldValue, newValue) -> {
+					try {
 						givenLevelOfTemperature = Double.parseDouble(newValue);
-						} catch(NumberFormatException e) {
-						    warningLabel.setText("Temperature should be added in double format \n with point as a seperator");
-						}
-					});
-				}
+					} catch (NumberFormatException e) {
+						warningLabel
+								.setText("Temperature should be added in double format \n with point as a seperator");
+					}
+				});
+			}
 		});
 
 		// selecting givenPlaceOfMeasurement value in dedicated Choice Box
@@ -121,6 +125,7 @@ public class AddTemperatureController implements Initializable {
 
 		// input for givenTimeField, getting givenTimeOfMeasurement value for further
 		// use
+		givenTimeField.setOnMouseEntered(mouseEvent -> warningLabel.setText(""));
 		givenTimeField.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -136,7 +141,16 @@ public class AddTemperatureController implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
+					Pattern pattern = Pattern.compile("([01]?[0-9]|2[0-3]):[0-5][0-9]");
+					Matcher matcher = pattern.matcher(givenTimeOfMeasurement);
+					matcher.matches();
+					if (matcher.matches() == false) {
+						warningLabel.setText( "Time should be added in format: \"HH:MM\".");
+						givenTimeField.clear();
+						matcher = null;
+					} else {
 					goToAddedTemperaturePane(event);
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
