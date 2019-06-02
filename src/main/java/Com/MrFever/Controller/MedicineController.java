@@ -8,6 +8,9 @@ import java.util.ResourceBundle;
 import Com.MrFever.Dao.AddMedicineDoseDao;
 import Com.MrFever.Dao.MedicinesDetailDao;
 import Com.MrFever.Model.MedicinesDetail;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -72,30 +75,26 @@ public class MedicineController implements Initializable {
 			e1.printStackTrace();
 		}
 
-		medChoiceBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-			selectedMedicine = newValue;
-		});
-
 		// viewing details about chosen medicine after selecting option in choiceBox
-		getMedChoiceBox().setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				// filling medicineTab using selecting items from database
-				medicineTab.getItems().clear();
-				try {
-					mDDao.viewMedicineDescription();
-				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		medChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		      @Override
+		      public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+		    	  selectedMedicine = newValue;
+		    	  medicineTab.getItems().clear();
+					try {
+						mDDao.viewMedicineDescription();
+					} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
-				formOfMedColumn.setCellValueFactory(new PropertyValueFactory("form"));
-				medDescriptionColumn.setCellValueFactory(new PropertyValueFactory("description"));
-				medicineTab.setItems(null);
-				medicineTab.setItems(mDDao.medicinesDetailList);
-			}
-		});
-
+					formOfMedColumn.setCellValueFactory(new PropertyValueFactory("form"));
+					medDescriptionColumn.setCellValueFactory(new PropertyValueFactory("description"));
+					medicineTab.setItems(null);
+					medicineTab.setItems(mDDao.medicinesDetailList);
+		      }
+		    });
+	
 		// action for addMedDoseButton to send you to AddMedicineDose Pane
 		addMedDoseButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

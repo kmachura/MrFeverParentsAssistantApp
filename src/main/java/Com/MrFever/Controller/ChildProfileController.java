@@ -10,6 +10,7 @@ import Com.MrFever.Dao.MedicineDao;
 import Com.MrFever.Dao.TemperatureDao;
 import Com.MrFever.Model.Medicine;
 import Com.MrFever.Model.Temperature;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -97,6 +98,7 @@ public class ChildProfileController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
+		//viewing details about selected child based on the selection from database
 		try {
 			chPDao.viewChildDetails();
 		} catch (ClassNotFoundException | SQLException | InterruptedException e1) {
@@ -108,13 +110,12 @@ public class ChildProfileController implements Initializable {
 		birthLabel.setText("Child's date of birth: " + ChildProfileDao.dateOfBirth);
 	
 		String sexImage = ChildProfileDao.sex;
-		/*
-
+	
 		if (sexImage.equals("boy")) {
-			girlOrBoy.setImage(new Image(FXMLLoader.class.getResourceAsStream("../Resources/boy.png")));
+			girlOrBoy.setImage(new Image(getClass().getResourceAsStream("../Resources/boy.png")));
 		}
-		*/
 		
+	
 		// filling temperatureTable using selecting items from database
 		try {
 			tDao.viewTemperatures();
