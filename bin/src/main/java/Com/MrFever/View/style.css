@@ -1,0 +1,132 @@
+.text-area {
+	 -fx-background-repeat: no-repeat;
+	 -fx-text-fill: #191970;
+	 -fx-highlight-fill: #FFFFFF; 
+	 -fx-highlight-text-fill: #191970;
+	 -fx-alignment: center;	  
+     -fx-focus-color: #FFFFFF;
+     -fx-faint-focus-color: #FFFFFF;
+     -fx-text-box-border: #FFFFFF;
+     -fx-shadow-highlight-color: white; 
+     -fx-border-insets: 1, 1 1 1 1;     
+}
+
+
+.text-area:focused .content {
+    -fx-background-color: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-faint-focus-color: #FFFFFF;
+    }
+    
+#welcome-label {
+	 -fx-font: 18px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+	 }
+
+#child-label, #med-label, #exit-label {
+	 -fx-font: 14px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+	 }
+	 
+.separator:horizontal .line {
+	-fx-border-color: #FFFFFF;
+	-fx-text-box-border: #FFFFFF;
+    -fx-shadow-highlight-color: #FFFFFF; 
+    -fx-border-insets: 1, 1 1 1 1;
+}
+
+.button {
+	 -fx-font: 20px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+}
+
+.button:hover, .button:selected {
+	-fx-background-color: #FF0000;
+	-fx-text-fill: #FFFFFF;
+}
+
+.text-area {
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #FF0000;
+}
+
+.root{
+    -fx-base: #FFFFFF;
+    -fx-background: #FFFFFF;
+}
+
+#main-pane {
+     -fx-background-image: url("../Resources/main_background.png"); 
+	 -fx-background-repeat: no-repeat;
+}
+
+#child-button {
+	-fx-background-image: url("../Resources/child.png");  
+}
+
+#med-button {
+		-fx-background-image: url("../Resources/med.png");  
+}
+
+#exit-button {
+	-fx-background-image: url("../Resources/exit.png");  
+}
+
+#return-button {
+	-fx-background-image: url("../Resources/return.png"); 
+	-fx-background-repeat: no-repeat; 
+}
+
+#return-button:hover, #return-button:selected {
+	-fx-background-color: #FFFFFF;
+}
+
+#clean-button {
+	-fx-background-image: url("../Resources/clean.png"); 
+	-fx-background-repeat: no-repeat; 
+}
+
+#clean-button:hover, #add-med-dose-button:selected {
+	-fx-background-color: #FFFFFF;
+}
+#add-med-dose-button {
+	-fx-background-image: url("../Resources/dose.png"); 
+	-fx-background-repeat: no-repeat; 
+}
+
+#add-med-dose-button:hover, #add-med-dose-button:selected {
+	-fx-background-color: #FFFFFF;
+}
+
+#add-temperature-button {
+	-fx-background-image: url("../Resources/addTemperature.png"); 
+	-fx-background-repeat: no-repeat; 
+}
+
+#add-temperature-button:hover, #add-temperature-button:selected {
+	-fx-background-color: #FFFFFF;
+}
+
+#warning-label {
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #FF0000;
+	 -fx-font-weight: bold;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+}
+
+#confirmation-label, #name-label, #birth-label {
+	 -fx-font: 16px "Serif";
+	 -fx-text-fill: #000000;
+	 -fx-border: 0;
+	 -fx-background-color: #FFFFFF;
+}
