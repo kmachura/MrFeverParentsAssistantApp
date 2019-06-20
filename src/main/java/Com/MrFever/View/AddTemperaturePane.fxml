@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Com.MrFever.Controller.AddTemperatureController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="400.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/MrFeverMini.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox prefHeight="400.0" prefWidth="488.0">
+         <children>
+           <Pane prefHeight="382.0" prefWidth="488.0">
+               <children>
+                  <Label id="title-label" fx:id="titleLabel" layoutX="88.0" layoutY="30.0" text="Add body temperature level">
+                     <font>
+                        <Font name="Serif Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label id="temperature-level-label" fx:id="temperatureLevelLabel" layoutX="35.0" layoutY="142.0" text="Temperature level:">
+                     <font>
+                        <Font name="Serif Regular" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField id="given-temperature-level-field" fx:id="givenTemperatureLevelField" layoutX="203.0" layoutY="139.0" prefHeight="23.0" prefWidth="234.0" promptText="Temperature level">
+                     <font>
+                        <Font name="Georgia" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label id="place-of-measurement-label" fx:id="placeOfMeasurementLabel" layoutX="35.0" layoutY="186.0" text="Place of measurement:">
+                     <font>
+                        <Font name="Serif Regular" size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox id="place-of-measurement-choice-box" fx:id="placeOfMeasurementChoiceBox" layoutX="203.0" layoutY="181.0" prefHeight="25.0" prefWidth="234.0" />
+                  <Label id="date-label" fx:id="dateLabel" layoutX="35.0" layoutY="234.0" text="Date:">
+                     <font>
+                        <Font name="Serif Regular" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label id="time-label" fx:id="timeLabel" layoutX="29.0" layoutY="276.0" text="Time (HH:MM):">
+                     <font>
+                        <Font name="Serif Regular" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField id="given-time-field" fx:id="givenTimeField" layoutX="204.0" layoutY="273.0" prefHeight="23.0" prefWidth="234.0" promptText="HH:MM">
+                     <font>
+                        <Font name="Georgia" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Button id="add-temp-button" fx:id="addTempButton" layoutX="155.0" layoutY="309.0" mnemonicParsing="false" text="Add temperature" />
+                  <DatePicker id="given-date-picker" fx:id="givenDatePicker" layoutX="203.0" layoutY="229.0" prefHeight="25.0" prefWidth="234.0" />
+                  <Label id="warning-label" fx:id="warningLabel" layoutX="29.0" layoutY="67.0" prefHeight="64.0" prefWidth="407.0" />
+               </children>
+            </Pane>
+            <HBox prefHeight="63.0" prefWidth="488.0">
+               <children>
+                  <Separator maxHeight="30.0" maxWidth="390.0" orientation="VERTICAL" prefWidth="390.0" />
+                  <Button id="clean-button" fx:id="cleanButton" maxWidth="45.0" mnemonicParsing="false" prefWidth="45.0" />
+                  <Button id="return-button" fx:id="returnButton" mnemonicParsing="false" prefWidth="45.0" />
+               </children>
+            </HBox>
+          
+         </children>
+      </VBox>
+   </children>
+</HBox>
